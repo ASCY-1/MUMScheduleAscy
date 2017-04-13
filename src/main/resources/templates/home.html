@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title>ASCY - MUMSched</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href="@{css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+<link th:href="@{css/style.css}" rel="stylesheet" media="screen" />
+<link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css}" rel="stylesheet" media="screen" />
+</head>
+<body ng-app="myApp">
+	<div ng-controller="mainController">
+		<div class="header">
+			<p>
+			<h4>ASCY - MUM Scheduling System</h4>
+			</p>
+		</div>
+		<div class="content">
+			<div class="left-menu">
+				<ul class="list-group">
+					<a href="#/">
+						<li class="list-group-item" ng-click="activeUrl='student'" ng-class="{'active': activeUrl=='student'}">Students</li>
+					</a>
+					<a href="#/blocks">
+						<li class="list-group-item block-link" ng-click="activeUrl='blocks'" ng-class="{'active': activeUrl=='blocks'}">Blocks</li>
+					</a>
+					<a href="#/courses">
+						<li class="list-group-item" ng-click="activeUrl='courses'" ng-class="{'active': activeUrl=='courses'}">Courses</li>
+					</a>
+					<a href="#/faculty">
+						<li class="list-group-item" ng-click="activeUrl='faculty'" ng-class="{'active': activeUrl=='faculty'}">Faculty</li>
+					</a>
+					<a href="#">
+						<li class="list-group-item" ng-click="activeUrl='schedule'" ng-class="{'active': activeUrl=='schedule'}">Schedule</li>
+					</a>
+					<a href="#">
+						<li class="list-group-item" ng-click="activeUrl='analytics'" ng-class="{'active': activeUrl=='analytics'}">Analytics</li>
+					</a>
+					<a href="#">
+						<li class="list-group-item" ng-click="activeUrl='settings'" ng-class="{'active': activeUrl=='settings'}">Settings</li>
+					</a>
+				</ul>
+			</div>
+			<div class="right-content">
+				<div ng-view="true"></div>
+			</div>
+		</div>
+		<div class="footer">
+			<p>Copyright @ 2017</p>
+		</div>
+	</div>
+
+	<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js}"></script><script
+		th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+	<script
+		th:src="@{https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js}"></script>
+	<script
+		th:src="@{https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js}"></script>
+	<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js}"></script>
+	<script th:src="@{js/script.js}"></script>
+	
+</body>
+</html>
