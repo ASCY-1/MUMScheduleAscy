@@ -1,3 +1,7 @@
+#!/bin/bash
+
+
+echo "it works!!"
 function gp(){
    git pull
 }
