@@ -20,26 +20,26 @@ public class CourseController {
 	private CourseService courseService;
 	
 	
-	@RequestMapping("/course")
+	@RequestMapping(URLConfig.COURSE)
 	public List<Course> index(){
 		return courseService.getAll();
 	}
 	
-	@RequestMapping("/course/{id}")
+	@RequestMapping(URLConfig.COURSEDETAIL)
 	public Course view(@PathVariable int id){
 		return courseService.getById(id);
 	}
 	
-	@RequestMapping(value="/course",method=RequestMethod.POST)
+	@RequestMapping(value=URLConfig.COURSE,method=RequestMethod.POST)
 	public void create(@RequestBody Course course){
 		courseService.create(course);
 	}
 	
-	@RequestMapping(value="/course",method=RequestMethod.PUT)
+	@RequestMapping(value=URLConfig.COURSE,method=RequestMethod.PUT)
 	public void update(@RequestBody Course course){
 		courseService.update(course);
 	}
-	@RequestMapping(value="/course",method=RequestMethod.DELETE)
+	@RequestMapping(value=URLConfig.COURSE,method=RequestMethod.DELETE)
 	public void delete(@RequestBody Course course ){
 		courseService.delete(course);
 	}

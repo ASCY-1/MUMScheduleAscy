@@ -5,10 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ascy.IUserSubSystem;
 import com.ascy.domain.Profile;
 import com.ascy.repository.ProfileRepository;
 @Service
-public class ProfileService {
+public class ProfileService implements IUserSubSystem{
 
 	@Autowired
 	private ProfileRepository profileRepository; 
@@ -25,6 +26,7 @@ public class ProfileService {
 
 	public void create(Profile profile) {
 		profileRepository.save(profile);
+		
 		
 	}
 
