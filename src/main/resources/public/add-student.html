@@ -1,0 +1,50 @@
+<div id="add-student">
+    <div class="reg-form">
+        <h3>Add a student Form</h3>
+        <form class="reg-form-actual">
+            <div class="form-group">
+                <label for="usr">Id Number:</label>
+                <input type="text" ng-model="student.id" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="usr">First Name:</label>
+                <input type="text" ng-model="student.firstName" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="usr">Last Name:</label>
+                <input type="text" ng-model="student.lastName" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="usr">Email:</label>
+                <input type="text" ng-model="student.email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="usr">Entry:</label>
+				<select class="form-control" ng-model="student.entry">
+				  <option>Select Entry</option>
+				  <option>JAN</option>
+				  <option>APRIL</option>
+				  <option>AUG</option>
+				  <option>OCT</option>
+				</select>
+            </div>
+            <div class="form-group">
+                <label for="usr">Track:</label>
+                <select class="form-control" ng-model="student.track">
+				  <option>Select Track</option>
+				  <option>MPP</option>
+				  <option>FPP</option>
+				</select>
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" ng-model="student.password" class="form-control"required>
+            </div>
+            <div>
+                <button type="button" class="btn btn-danger">Cancel</button>
+                <button type="button" class="btn btn-success" ng-click="sendStudentData()">Submit</button>
+            </div>
+
+        </form>
+    </div>
+</div>

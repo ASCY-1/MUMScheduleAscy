@@ -1,0 +1,82 @@
+.header, .footer {
+    background-color: #ccc8c8;
+    height:6%;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+}
+
+.header{
+    top: 0px;
+    z-index: 1000;
+}
+.footer{
+    bottom: 0px;
+
+}
+
+.content{
+    background-color: #d4d0d0;
+    position: absolute;
+    top: 7.2%;
+    width: 94%;
+    height: 85%;
+    margin: 2px 3% 2px 3%;
+    border: solid lightgray;
+    border-radius: 4px;
+}
+
+.left-menu{
+    width: 20%;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 4px;
+}
+
+.list-group-item{
+    border-radius: 0px !important;
+}
+
+.right-content{
+    width: 76%;
+    margin: 10px;
+    display: inline-block;
+    background-color: white;
+    height: 96%;
+    overflow: auto;
+    border-radius: 4px;
+}
+
+.list-group-item:hover{
+    background-color: #337ab7;;
+    color: black;
+}
+
+.list-group-item .active{
+    background-color: lightgray !important;
+}
+
+.container{
+    width: inherit;
+}
+
+.reg-form{
+    width: 50%;
+    background-color: #eaeaea;
+    overflow: auto;
+    margin: 6% 10%;
+    text-align: center;
+    border: solid lightblue 2px;
+    border-radius: 3px;
+}
+
+.form-control{
+    display: inline-block;
+    width: 260px;
+    float: right;
+}
+
+.reg-form-actual{
+    margin: 30px;
+}

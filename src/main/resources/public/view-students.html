@@ -1,0 +1,35 @@
+<div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+        <div class="container">
+            <h2>List of all students</h2>
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                	<th>Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Entry</th>
+                    <th>Track</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                	<tr ng-repeat="st in students">
+					    <td>{{ st.id }}</td>
+					    <td>{{ st.firstName }}</td>
+					    <td>{{ st.lastName }}</td>
+					    <td>{{ st.email}}</td>
+					    <td>{{ st.entry }}</td>
+					    <td>{{ st.track}}</td>
+					    <td>
+					    	<button type="button" class="btn btn-default btn-sm">
+					          <span></span> Edit
+					        </button>
+					   </td>
+					  </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

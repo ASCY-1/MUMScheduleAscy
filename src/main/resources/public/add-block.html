@@ -1,0 +1,28 @@
+<div id="add-block">
+    <div class="reg-form">
+        <h3>Add New Block Form</h3>
+        <form class="reg-form-actual">
+            <div class="form-group">
+                <label for="usr">Block Id:</label>
+                <input type="text" ng-model="form.blockId"  class="form-control" id="usr" required>
+            </div>
+            <div class="form-group">
+                <label for="usr">Block Name:</label>
+                <input type="text" ng-model="form.blockName"  class="form-control" id="usr" required>
+            </div>
+            <div class="form-group">
+                <label for="usr">Start Date:</label>
+                <input type="date" ng-model="form.blockStarts" class="form-control" id="usr">
+            </div>
+            <div class="form-group">
+                <label for="usr">End Date:</label>
+                <input type="date" ng-model="form.blockEnds" class="form-control" id="usr">
+            </div>
+            <div>
+                <button type="button" class="btn btn-danger">Cancel</button>
+                <button type="button" class="btn btn-success" ng-click="sendData()">Submit</button>
+            </div>
+
+        </form>
+    </div>
+</div>

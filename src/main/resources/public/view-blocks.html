@@ -1,0 +1,27 @@
+<div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+        <div class="container">
+            <h2>List of all Blocks</h2>
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                	<th>Block Id</th>
+                    <th>Block Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>More</th>
+                </tr>
+                </thead>
+                <tbody>
+                	<tr ng-repeat="block in blocks">
+					    <td>{{ block.blockId }}</td>
+					    <td>{{ block.blockName }}</td>
+					    <td>{{ block.blockStarts }}</td>
+					    <td>{{ block.blockEnds }}</td>
+					    <td><button ng-click="showSections()">+View Sections</button></td>
+					  </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

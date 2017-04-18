@@ -13,13 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ascy.domain.Profile;
 import com.ascy.service.ProfileService;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
-
 @RestController
 public class ProfileController {
 	@Autowired
 	private ProfileService profileService;
-	
 	
 	@RequestMapping(URLConfig.PROFILE)
 	public List<Profile> index(){

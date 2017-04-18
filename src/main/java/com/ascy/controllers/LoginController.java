@@ -4,7 +4,7 @@ import javax.servlet.ServletException;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,9 +16,9 @@ import com.ascy.security.*;
 import com.ascy.service.LoginService;
 import com.ascy.service.ProfileService;
 
-import io.jsonwebtoken.Claims;
 import java.util.*;
-@RestController
+//@RestController
+@Controller
 public class LoginController {
 	@Autowired
 	LoginService loginService;
@@ -35,4 +35,10 @@ public class LoginController {
 			IUserSubSystem profile = profileService;
 			return profile.getAll();
 	}
+	@RequestMapping(URLConfig.HOME)
+	public String loginPage(){			
+		return "login/login";
+	}
 }
+
+
