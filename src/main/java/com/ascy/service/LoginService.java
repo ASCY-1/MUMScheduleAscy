@@ -25,8 +25,12 @@ public class LoginService {
 	
 	public UserToken authenticate(UserAuth user) throws ServletException {
 		
+		
 		Profile userDb = profileRepo.findByEmail(user.getUserName(), user.getPassword());
-		if(userDb == null) throw new ServletException("Invalid login");
+		
+		if(userDb == null) {
+			throw new ServletException("Invalid login");
+		}
 		
 		return new UserToken(Jwts.builder().setSubject(user.getUserName())
 				.claim("role",userDb.getRole())

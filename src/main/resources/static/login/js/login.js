@@ -13,8 +13,8 @@ angular.module('mumSched.login', ['ngRoute'])
 
     .controller('loginController', function($scope,$http) {
         $scope.user = {
-            email:"",
-            password:""
+            userName:"email@mail.com",
+            password:"pass"
         };
 
         $scope.send=function () {
@@ -29,7 +29,7 @@ angular.module('mumSched.login', ['ngRoute'])
                 data: user
             }
             $http(req).then(function successCallback(response) {
-                console.log(response);
+                console.log(response.data.token);
             }, function errorCallback(response) {
                $scope.error = "Invalid login" + response;
             })
