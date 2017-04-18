@@ -1,17 +1,18 @@
-/**
- * Created by 985649 on 4/17/2017.
- */
 
-angular.module('mumSched.login', ['ngRoute'])
-
-    .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/login', {
+var myApp = angular.module('myApp', ['ngRoute']);
+	console.log("Step 1");
+myApp.config(['$routeProvider', function($routeProvider) {
+        $routeProvider.when("/", {
+//        	console.log("Step 2");
+//            templateUrl: "login/blocks.html"
+            templateUrl: "login/login.html"
+        }).when('/login', {
             templateUrl: 'login/login.html',
             controller: 'loginController'
         });
-    }])
+    }]);
 
-    .controller('loginController', function($scope,$http) {
+myApp.controller('loginController', function($scope,$http) {
         $scope.user = {
             email:"",
             password:""

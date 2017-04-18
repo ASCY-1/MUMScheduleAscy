@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="utf-8"></meta>
-		<title>My AngularJS App</title>
+		<title>MUMSched-ASCY</title>
 		
 		<link rel="stylesheet" th:href="@{bower_components/html5-boilerplate/dist/css/normalize.css}"></link>
 		<link rel="stylesheet" th:href="@{bower_components/html5-boilerplate/dist/css/main.css}"></link>
@@ -12,8 +12,9 @@
 		<script th:src="@{bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js}"></script>
 		
 	</head>
-	<body>
-		<div ng-view="true"></div>
+	<body ng-app="myApp">
+		<div ng-view="true">
+		</div>
 	
 		<script th:src="@{bower_components/angular/angular.js}"></script>
 		<script th:src="@{bower_components/angular-route/angular-route.js}"></script>
