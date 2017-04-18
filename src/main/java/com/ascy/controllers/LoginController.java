@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.ascy.IUserSubSystem;
 import com.ascy.domain.Profile;
@@ -35,10 +34,10 @@ public class LoginController {
 			IUserSubSystem profile = profileService;
 			return profile.getAll();
 	}
-	@RequestMapping(URLConfig.HOME)
-	public String loginPage(){			
-		return "login/login";
-	}
+//	@RequestMapping(URLConfig.HOME)
+//	public String loginPage(){			
+//		return "login/login";
+//	}
 }
 
 
