@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.ascy.IUserSubSystem;
 import com.ascy.domain.Profile;
@@ -16,8 +17,8 @@ import com.ascy.service.LoginService;
 import com.ascy.service.ProfileService;
 
 import java.util.*;
-//@RestController
-@Controller
+@RestController
+//@Controller
 public class LoginController {
 	@Autowired
 	LoginService loginService;
@@ -25,7 +26,8 @@ public class LoginController {
 	private ProfileService profileService; 
 	
 	@RequestMapping(value= URLConfig.LOGIN, method=RequestMethod.POST)
-	public UserToken login(@RequestBody UserAuth user) throws ServletException{			
+	public UserToken login(@RequestBody UserAuth user) throws ServletException{		
+		
 			return loginService.authenticate(user);			
 	}
 	
