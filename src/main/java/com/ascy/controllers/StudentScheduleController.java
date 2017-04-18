@@ -19,26 +19,26 @@ public class StudentScheduleController {
 	private StudentScheduleService studentScheduleService;
 	
 	
-	@RequestMapping("/studentSchedule")
+	@RequestMapping(URLConfig.STUDENTSCHEDULE)
 	public List<StudentSchedule> index(){
 		return studentScheduleService.getAll();
 	}
 	
-	@RequestMapping("/studentSchedule/{id}")
+	@RequestMapping(URLConfig.STUDENTSCHEDULEDETAIL)
 	public StudentSchedule view(@PathVariable int id){
 		return studentScheduleService.getById(id);
 	}
 	
-	@RequestMapping(value="/studentSchedule",method=RequestMethod.POST)
+	@RequestMapping(value=URLConfig.STUDENTSCHEDULE,method=RequestMethod.POST)
 	public void create(@RequestBody StudentSchedule studentSchedule){
 		studentScheduleService.create(studentSchedule);
 	}
 	
-	@RequestMapping(value="/studentSchedule",method=RequestMethod.PUT)
+	@RequestMapping(value=URLConfig.STUDENTSCHEDULE,method=RequestMethod.PUT)
 	public void update(@RequestBody StudentSchedule studentSchedule){
 		studentScheduleService.update(studentSchedule);
 	}
-	@RequestMapping(value="/studentSchedule",method=RequestMethod.DELETE)
+	@RequestMapping(value=URLConfig.STUDENTSCHEDULE,method=RequestMethod.DELETE)
 	public void delete(@RequestBody StudentSchedule studentSchedule ){
 		studentScheduleService.delete(studentSchedule);
 	}

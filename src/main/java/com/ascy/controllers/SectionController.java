@@ -19,26 +19,26 @@ public class SectionController {
 	private SectionService sectionService;
 	
 	
-	@RequestMapping("/section")
+	@RequestMapping(URLConfig.SECTION)
 	public List<Section> index(){
 		return sectionService.getAll();
 	}
 	
-	@RequestMapping("/section/{id}")
+	@RequestMapping(URLConfig.SECTIONDETAIL)
 	public Section view(@PathVariable int id){
 		return sectionService.getById(id);
 	}
 	
-	@RequestMapping(value="/section",method=RequestMethod.POST)
+	@RequestMapping(value=URLConfig.SECTION,method=RequestMethod.POST)
 	public void create(@RequestBody Section section){
 		sectionService.create(section);
 	}
 	
-	@RequestMapping(value="/section",method=RequestMethod.PUT)
+	@RequestMapping(value=URLConfig.SECTION,method=RequestMethod.PUT)
 	public void update(@RequestBody Section section){
 		sectionService.update(section);
 	}
-	@RequestMapping(value="/section",method=RequestMethod.DELETE)
+	@RequestMapping(value=URLConfig.SECTION,method=RequestMethod.DELETE)
 	public void delete(@RequestBody Section section ){
 		sectionService.delete(section);
 	}

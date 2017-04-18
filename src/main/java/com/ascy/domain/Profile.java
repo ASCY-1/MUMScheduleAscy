@@ -6,8 +6,10 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(name = "Profile.findByEmail", query = "SELECT p FROM Profile p WHERE LOWER(p.email) = LOWER(?1) and p.password= ?2")
 public class Profile {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

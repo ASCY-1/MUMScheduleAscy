@@ -5,11 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ascy.IBlockSubSystem;
 import com.ascy.domain.Block;
 import com.ascy.repository.BlockRepository;
 
 @Service
-public class BlockService {
+public class BlockService implements IBlockSubSystem{
 	
 	@Autowired
 	private BlockRepository blockRepository; 

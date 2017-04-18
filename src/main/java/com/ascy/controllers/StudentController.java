@@ -19,26 +19,26 @@ public class StudentController {
 	private StudentService studentService;
 	
 	
-	@RequestMapping("/student")
+	@RequestMapping(URLConfig.STUDENT)
 	public List<Student> index(){
 		return studentService.getAll();
 	}
 	
-	@RequestMapping("/student/{id}")
+	@RequestMapping(URLConfig.STUDENTDETAIL)
 	public Student view(@PathVariable int id){
 		return studentService.getById(id);
 	}
 	
-	@RequestMapping(value="/student",method=RequestMethod.POST)
+	@RequestMapping(value=URLConfig.STUDENT,method=RequestMethod.POST)
 	public void create(@RequestBody Student student){
 		studentService.create(student);
 	}
 	
-	@RequestMapping(value="/student",method=RequestMethod.PUT)
+	@RequestMapping(value=URLConfig.STUDENT,method=RequestMethod.PUT)
 	public void update(@RequestBody Student student){
 		studentService.update(student);
 	}
-	@RequestMapping(value="/student",method=RequestMethod.DELETE)
+	@RequestMapping(value=URLConfig.STUDENT,method=RequestMethod.DELETE)
 	public void delete(@RequestBody Student student ){
 		studentService.delete(student);
 	}

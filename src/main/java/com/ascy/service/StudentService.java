@@ -14,6 +14,8 @@ public class StudentService {
 	@Autowired
 	private StudentRepository studentRepository; 
 	
+	
+	
 	public List<Student> getAll() {
 		// TODO Auto-generated method stub
 		return (List<Student>)studentRepository.findAll();

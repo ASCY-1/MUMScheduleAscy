@@ -13,32 +13,36 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ascy.domain.Profile;
 import com.ascy.service.ProfileService;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
+
 @RestController
 public class ProfileController {
 	@Autowired
 	private ProfileService profileService;
 	
 	
-	@RequestMapping("/profile")
+	@RequestMapping(URLConfig.PROFILE)
 	public List<Profile> index(){
 		return profileService.getAll();
 	}
 	
-	@RequestMapping("/profile/{id}")
+	@RequestMapping(URLConfig.PROFILEDETAIL)
 	public Profile view(@PathVariable int id){
 		return profileService.getById(id);
 	}
 	
-	@RequestMapping(value="/profile",method=RequestMethod.POST)
+	@RequestMapping(value=URLConfig.PROFILE,method=RequestMethod.POST)
 	public void create(@RequestBody Profile profile){
+		
 		profileService.create(profile);
+		
 	}
 	
-	@RequestMapping(value="/profile",method=RequestMethod.PUT)
+	@RequestMapping(value=URLConfig.PROFILE,method=RequestMethod.PUT)
 	public void update(@RequestBody Profile profile){
 		profileService.update(profile);
 	}
-	@RequestMapping(value="/profile",method=RequestMethod.DELETE)
+	@RequestMapping(value=URLConfig.PROFILE,method=RequestMethod.DELETE)
 	public void delete(@RequestBody Profile profile ){
 		profileService.delete(profile);
 	}
