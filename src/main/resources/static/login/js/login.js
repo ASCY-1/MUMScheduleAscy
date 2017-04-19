@@ -1,10 +1,8 @@
 
-var myApp = angular.module('myApp', ['ngRoute']);
-	console.log("Step 1");
+var myApp = angular.module('mumSched.login', ['ngRoute']);
+
 myApp.config(['$routeProvider', function($routeProvider) {
         $routeProvider.when("/", {
-//        	console.log("Step 2");
-//            templateUrl: "login/blocks.html"
             templateUrl: "login/login.html"
         }).when('/login', {
             templateUrl: 'login/login.html',
