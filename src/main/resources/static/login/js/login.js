@@ -1,16 +1,14 @@
 
-var myApp = angular.module('mumSched.login', ['ngRoute']);
-
-myApp.config(['$routeProvider', function($routeProvider) {
+ angular.module('mumSched.login', ['ngRoute'])
+.config(['$routeProvider', function($routeProvider) {
         $routeProvider.when("/", {
             templateUrl: "login/login.html"
         }).when('/login', {
             templateUrl: 'login/login.html',
             controller: 'loginController'
         });
-    }]);
-
-myApp.controller('loginController', function($scope,$http) {
+    }])
+.controller('loginController', function($scope,$http,$rootScope) {
         $scope.user = {
             userName:"email@mail.com",
             password:"pass"
@@ -29,8 +27,10 @@ myApp.controller('loginController', function($scope,$http) {
             }
             $http(req).then(function successCallback(response) {
                 console.log(response.data.token);
+                $rootScope.token = response.data.token;
             }, function errorCallback(response) {
                $scope.error = "Invalid login" + response;
             })
         }
     });
+
