@@ -1,5 +1,5 @@
 
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('mumSched.login', ['ngRoute']);
 	console.log("Step 1");
 myApp.config(['$routeProvider', function($routeProvider) {
         $routeProvider.when("/", {
