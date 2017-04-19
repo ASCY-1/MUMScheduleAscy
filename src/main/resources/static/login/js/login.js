@@ -1,18 +1,11 @@
-
-var myApp = angular.module('mumSched.login', ['ngRoute']);
-	console.log("Step 1");
-myApp.config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when("/", {
-//        	console.log("Step 2");
-//            templateUrl: "login/blocks.html"
-            templateUrl: "login/login.html"
-        }).when('/login', {
+ angular.module('mumSched.login', ['ngRoute'])
+.config(['$routeProvider', function($routeProvider) {
+        $routeProvider.when('/login', {
             templateUrl: 'login/login.html',
             controller: 'loginController'
         });
-    }]);
-
-myApp.controller('loginController', function($scope,$http) {
+    }])
+.controller('loginController', function($http,$scope,$rootScope,$location) {
         $scope.user = {
             userName:"email@mail.com",
             password:"pass"
@@ -30,9 +23,12 @@ myApp.controller('loginController', function($scope,$http) {
                 data: user
             }
             $http(req).then(function successCallback(response) {
-                console.log(response.data.token);
+               
+                $rootScope.token = response.data.token;
+                $location.path("/");
             }, function errorCallback(response) {
                $scope.error = "Invalid login" + response;
             })
         }
     });
+
