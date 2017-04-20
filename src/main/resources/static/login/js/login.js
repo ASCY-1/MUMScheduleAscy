@@ -1,6 +1,6 @@
  angular.module('mumSched.login', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/login', {
+        $routeProvider.when('/', {
             templateUrl: 'login/login.html',
             controller: 'loginController'
         });
@@ -25,7 +25,7 @@
             $http(req).then(function successCallback(response) {
                
                 $rootScope.token = response.data.token;
-                $location.path("/");
+                $location.path("/home");
             }, function errorCallback(response) {
                $scope.error = "Invalid login" + response;
             })

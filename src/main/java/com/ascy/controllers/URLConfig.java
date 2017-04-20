@@ -19,7 +19,7 @@ public class URLConfig {
 	public static final String STUDENTSCHEDULE = "/student/schedule";
 	public static final String STUDENTSCHEDULEDETAIL = "/student/schedule/{id}";
 	public static final String ME = "/me";
-	public static final String HOME = "/";
+	public static final String FIRST = "/";
 	public static final String ADMIN = "/admin";
 	
 	
