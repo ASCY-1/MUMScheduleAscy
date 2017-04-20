@@ -2,7 +2,6 @@ package com.ascy.controllers;
 
 import javax.servlet.ServletException;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,26 +15,24 @@ import com.ascy.service.LoginService;
 import com.ascy.service.ProfileService;
 
 import java.util.*;
+
 @RestController
-//@Controller
+// @Controller
 public class LoginController {
 	@Autowired
 	LoginService loginService;
 	@Autowired
-	private ProfileService profileService; 
-	
-	@RequestMapping(value= URLConfig.LOGIN, method=RequestMethod.POST)
-	public UserToken login(@RequestBody UserAuth user) throws ServletException{		
-		
-			return loginService.authenticate(user);			
+	private ProfileService profileService;
+
+	@RequestMapping(value = URLConfig.LOGIN, method = RequestMethod.POST)
+	public UserToken login(@RequestBody UserAuth user) throws ServletException {
+		return loginService.authenticate(user);
 	}
-	
+
 	@RequestMapping(URLConfig.ME)
-	public Profile currentUser(){			
-			IUserSubSystem profile = profileService;
-			return profile.getAll().get(0);
+	public Profile currentUser() {
+		IUserSubSystem profile = profileService;
+		return profile.getAll().get(0);
 	}
-	
+
 }
-
-

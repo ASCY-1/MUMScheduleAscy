@@ -41,9 +41,7 @@
                  switch($rootScope.userProfile.role){
                  	case "ADMIN":
                  		console.log("admin");
-//                 		$location.path("/admin");
                  		$window.location.href = 'admin';
-//                 		$window.location.href = '/faculty2';
                  		break;
                  	case "FACULTY":
                  		$window.location.href = 'admin.html';
