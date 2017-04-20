@@ -1,10 +1,13 @@
-var app = angular.module("myApp", ["ngRoute"]);
+var app = angular.module("myApp", ["ngRoute","ngCookies"]);
+console.log("inside script script");
 
-app.controller("mainController", ['$scope','$http', myFunc]);
+
+app.controller("mainController", ['$scope','$http', myFunc,"$cookieStore"]);
 //=============Controller Loaders==============//
-	function myFunc($scope, $http) {
+	function myFunc($scope, $http,$cookieStore) {
 		//=============Blocks ==============//
 		    $scope.form = {};
+		    //console.log($cookieStore.get("token")); 
 		    $scope.sendData = function () {
 		         $http.post('http://localhost:8080/block', $scope.form)
 		         .success(function (data, status, headers, config) {
