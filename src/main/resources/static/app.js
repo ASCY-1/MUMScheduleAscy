@@ -10,15 +10,8 @@ angular.module('mumSched', [
     
     .config(['$locationProvider', '$routeProvider',function($locationProvider, $routeProvider) {
   
-        $locationProvider.hashPrefix('!');
-        $routeProvider.when('/',{
-        	resolve:{
-                factory: checkRouting    
-            } 
-            
-        }).
-        
-        otherwise({redirectTo: '/login'});
+       
+        $routeProvider.otherwise({redirectTo: '/login'});
     }]);
 
         
