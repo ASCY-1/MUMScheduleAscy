@@ -49,6 +49,6 @@ angular.module("mumSched")
             get :getRequest,
             post :postRequest,
             put : putRequest,
-            delete : depeteRequest
+            delete : deleteRequest
            }
 }]);
