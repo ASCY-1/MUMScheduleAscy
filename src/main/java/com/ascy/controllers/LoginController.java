@@ -4,7 +4,6 @@ import javax.servlet.ServletException;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,14 +31,11 @@ public class LoginController {
 	}
 	
 	@RequestMapping(URLConfig.ME)
-	public List<Profile> currentUser(){			
+	public Profile currentUser(){			
 			IUserSubSystem profile = profileService;
-			return profile.getAll();
+			return profile.getAll().get(0);
 	}
-//	@RequestMapping(URLConfig.HOME)
-//	public String loginPage(){			
-//		return "login/login";
-//	}
+	
 }
 
 

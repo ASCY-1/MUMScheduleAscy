@@ -10,4 +10,9 @@ public class HomeController {
 	public String home(){
 		return "index";
 	}
+	
+	@RequestMapping(URLConfig.FACULTY2)
+	public String loginPage(){			
+		return "faculty/faculty";
+	}
 }

@@ -21,6 +21,7 @@ public class URLConfig {
 	public static final String ME = "/me";
 	public static final String FIRST = "/";
 	public static final String ADMIN = "/admin";
+	public static final String FACULTY2 = "/faculty2";
 	
 	
 }
