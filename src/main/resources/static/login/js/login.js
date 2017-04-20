@@ -1,11 +1,11 @@
- angular.module('mumSched.login', ['ngRoute'])
+ angular.module('mumSched.login', ['ngRoute','ngCookies'])
 .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/', {
             templateUrl: 'login/login.html',
             controller: 'loginController'
         });
     }])
-.controller('loginController', function($http,$scope,$rootScope,$location,httpWrapper,$window) {
+.controller('loginController', function($http,$scope,$rootScope,$location,httpWrapper,$window,$cookieStore) {
         $scope.user = {
             userName:"email@mail.com",
             password:"pass"
@@ -25,8 +25,10 @@
             $http(req).then(function successCallback(response) {
                 $rootScope.token = response.data.token;
 //               
+				$cookieStore.put('token', response.data.token,true);
                 httpWrapper.get({},"/me").then(function(response){
                 	$rootScope.userProfile = response.data;
+                	$cookieStore.put('userProfile', response.data,true); 
                 	redirectUser();
                 },function(response){
                 	console.error("Something wrong in fetching the user profile. In login.js");
