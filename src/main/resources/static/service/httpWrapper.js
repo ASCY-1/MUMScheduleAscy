@@ -1,12 +1,12 @@
 angular.module("mumSched")
-.factory('httpWrapper',["$http","$rootScope",function($http,$rootScope){        
+.factory('httpWrapper',["$http","$cookieStore",function($http,$cookieStore){
     var getRequest = function(data1,url1){
         return $http({
             method: 'GET',
             url: url1,
             headers: {
                 'Content-Type': "Application/json",
-                'Authorization': "Bearer "+$rootScope.token
+                'Authorization': "Bearer "+$cookieStore.get("token")
             },
             data: data1
         });
@@ -17,7 +17,7 @@ angular.module("mumSched")
             url: url1,
             headers: {
                 'Content-Type': "Application/json",
-                'Authorization': "Bearer "+$rootScope.token
+                'Authorization': "Bearer "+$cookieStore.get("token")
             },
             data: data1
         });
@@ -28,7 +28,7 @@ angular.module("mumSched")
             url: url1,
             headers: {
                 'Content-Type': "Application/json",
-                'Authorization': "Bearer "+$rootScope.token
+                'Authorization': "Bearer "+$cookieStore.get("token")
             },
             data: data1
         }); 
@@ -39,7 +39,7 @@ angular.module("mumSched")
             url: url1,
             headers: {
                 'Content-Type': "Application/json",
-                'Authorization': "Bearer "+$rootScope.token
+                'Authorization': "Bearer "+$cookieStore.get("token")
             },
             data: data1
         });

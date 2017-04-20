@@ -20,6 +20,12 @@ public class Block {
 	private String blockname;
 	private Date beginDate;
 	private Date endDate;
+	public Block(String blockname, Date beginDate, Date endDate) {
+		super();
+		this.blockname = blockname;
+		this.beginDate = beginDate;
+		this.endDate = endDate;
+	}
 	public Block(List<Section> sections, String blockname, Date beginDate, Date endDate) {
 		super();
 		this.sections = sections;

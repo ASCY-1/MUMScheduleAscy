@@ -1,30 +1,33 @@
-var app = angular.module("myApp", ["ngRoute","ngCookies"]);
+var app = angular.module("mumSched", ["ngRoute","ngCookies"]);
 console.log("inside script script");
 
 
-app.controller("mainController", ['$scope','$http', myFunc,"$cookieStore"]);
+app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper', myFunc]);
 //=============Controller Loaders==============//
-	function myFunc($scope, $http,$cookieStore) {
+	function myFunc($scope, $http,$cookieStore, httpWrapper) {
 		//=============Blocks ==============//
 		    $scope.form = {};
-		    //console.log($cookieStore.get("token")); 
+		    console.log($cookieStore.get("token")); 
+		    console.log("jhfhgfhgfhfhg"); 
 		    $scope.sendData = function () {
-		         $http.post('http://localhost:8080/block', $scope.form)
-		         .success(function (data, status, headers, config) {
+		    	httpWrapper.post($scope.form, 'http://localhost:8080/block')
+		         .then(function (response) {
 		        	 $scope.getBlocks();
 		        	 $scope.form = {};
 		        	 toastr.success("Success");
-		         })
-		         .error(function (data, status, header, config) {
+		         },function (response) {
 		        	 toastr.error("Error");
 		         });
 		     };
 		     
 		     $scope.blocks = [];
 		     $scope.getBlocks = function(){
-		    	 $http.get('http://localhost:8080/block').success(function(data){
-		        	 $scope.blocks = data;
-		         });
+                 httpWrapper.get({},'http://localhost:8080/block').then(function(data){
+		        	 $scope.blocks = data.data;
+		        	 console.log(data.data);
+		         }, function (data) {
+					 console.log("Error :"+data);
+                 });
 		     };
 		     $scope.getBlocks();
 		     
@@ -44,9 +47,14 @@ app.controller("mainController", ['$scope','$http', myFunc,"$cookieStore"]);
 		     
 		     $scope.students = [];
 		     $scope.getStudents = function(){
-		    	 $http.get('http://localhost:8080/student').success(function(data){
-		        	 $scope.students = data;
-		         });
+		    	 httpWrapper.get({},'http://localhost:8080/student').then(function(data){
+		        	 $scope.students = data.data;
+		         }, function (data) {
+					 console.log("Error :"+data);
+                 });
+//		    	 $http.get('http://localhost:8080/student').success(function(data){
+//		        	 $scope.students = data;
+//		         });
 		     };
 		     $scope.getStudents();
 	    

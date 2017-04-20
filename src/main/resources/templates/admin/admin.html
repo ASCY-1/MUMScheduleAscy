@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
 
-<title>Admin ASCY - MUMSched</title>
+<title>Admin44 ASCY - MUMSched</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link th:href="@{admin/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
 <link th:href="@{admin/css/style.css}" rel="stylesheet" media="screen" />
 <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css}" rel="stylesheet" media="screen" />
 </head>
-<body ng-app="myApp">
+<body ng-app="mumSched">
 	<div ng-controller="mainController">
 		<div class="header">
 			<p>
@@ -59,9 +59,11 @@
 		th:src="@{https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js}"></script>
 	<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js}"></script>
 	<script th:src="@{bower_components/angular-cookies/angular-cookies.min.js}"></script>
-		
+
+
 	<script th:src="@{admin/js/script.js}"></script>
-	
+	<script th:src="@{service/httpWrapper.js}"></script>
+
 	
 </body>
 </html>

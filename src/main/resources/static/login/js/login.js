@@ -25,10 +25,11 @@
             $http(req).then(function successCallback(response) {
                 $rootScope.token = response.data.token;
 //               
-				$cookieStore.put('token', response.data.token,true);
+				$cookieStore.put('token', response.data.token);
                 httpWrapper.get({},"/me").then(function(response){
                 	$rootScope.userProfile = response.data;
-                	$cookieStore.put('userProfile', response.data,true); 
+                	$cookieStore.put('userProfile', response.data); 
+                	$cookieStore.put('test', "Test 1"); 
                 	redirectUser();
                 },function(response){
                 	console.error("Something wrong in fetching the user profile. In login.js");

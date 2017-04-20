@@ -27,7 +27,6 @@ public class BlockService implements IBlockSubSystem{
 
 	public void create(Block block) {
 		blockRepository.save(block);
-		
 	}
 
 	public void update(Block block) {
