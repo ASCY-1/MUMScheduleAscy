@@ -1,6 +1,8 @@
 package com.ascy.controllers;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +16,8 @@ import com.ascy.security.*;
 import com.ascy.service.LoginService;
 import com.ascy.service.ProfileService;
 
+import io.jsonwebtoken.Claims;
+
 import java.util.*;
 
 @RestController
@@ -21,8 +25,6 @@ import java.util.*;
 public class LoginController {
 	@Autowired
 	LoginService loginService;
-	@Autowired
-	private ProfileService profileService;
 
 	@RequestMapping(value = URLConfig.LOGIN, method = RequestMethod.POST)
 	public UserToken login(@RequestBody UserAuth user) throws ServletException {
@@ -30,9 +32,11 @@ public class LoginController {
 	}
 
 	@RequestMapping(URLConfig.ME)
-	public Profile currentUser() {
-		IUserSubSystem profile = profileService;
-		return profile.getAll().get(0);
+	public Profile currentUser(HttpServletRequest request) {
+				
+		 
+		Claims c =(Claims) request.getAttribute("claims");
+		return loginService.currentUserProfile(c);
 	}
 
 }

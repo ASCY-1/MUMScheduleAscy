@@ -47,10 +47,10 @@
                  		$window.location.href = 'admin';
                  		break;
                  	case "FACULTY":
-                 		$window.location.href = 'admin.html';
+                 		$window.location.href = 'facultyIndex';
                  		break;
                  	case "STUDENT":
-                 		console.log("student");
+                 		console.log("student 1");
                  		$location.path("/student");
                  		break;
                  	default: 

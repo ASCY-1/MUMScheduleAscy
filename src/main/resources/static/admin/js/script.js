@@ -8,7 +8,7 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 		//=============Blocks ==============//
 		    $scope.form = {};
 		    console.log($cookieStore.get("token")); 
-		    console.log("jhfhgfhgfhfhg"); 
+		    
 		    $scope.sendData = function () {
 		    	httpWrapper.post($scope.form, 'http://localhost:8080/block')
 		         .then(function (response) {

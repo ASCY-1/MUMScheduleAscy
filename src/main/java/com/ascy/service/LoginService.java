@@ -12,6 +12,7 @@ import com.ascy.repository.ProfileRepository;
 import com.ascy.security.UserAuth;
 import com.ascy.security.UserToken;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -26,10 +27,17 @@ public class LoginService {
 	public UserToken authenticate(UserAuth user) throws ServletException {
 		
 		
-		Profile userDb = profileRepo.findByEmail(user.getUserName(), user.getPassword());
+		Profile userDb = profileRepo.findByEmail(user.getUserName());
+		
 		
 		if(userDb == null) {
 			throw new ServletException("Invalid login");
+		}
+		if(!userDb.getPassword().equals(user.getPassword())){
+			System.out.println("!!!!!!!!!!!!*@@@@@@@@@@@@@@@@@@@@@@(!!!!!!!!!!!!!!!!@*!&@&#*");
+			
+			System.out.println(user.getPassword()+" from db:"+ userDb.getPassword());
+			throw new ServletException("Invalid password");
 		}
 		
 		return new UserToken(Jwts.builder().setSubject(user.getUserName())
@@ -40,4 +48,8 @@ public class LoginService {
 		
 		}
 	
+	public Profile currentUserProfile(Claims c){
+		return profileRepo.findByEmail(c.getSubject());
+		
+	}
 }

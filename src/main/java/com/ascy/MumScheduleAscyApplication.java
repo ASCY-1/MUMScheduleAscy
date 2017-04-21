@@ -35,6 +35,7 @@ public class MumScheduleAscyApplication {
         registrationBean.addUrlPatterns(URLConfig.STUDENTDETAIL);
         registrationBean.addUrlPatterns(URLConfig.STUDENTSCHEDULE);
         registrationBean.addUrlPatterns(URLConfig.STUDENTSCHEDULEDETAIL);
+        registrationBean.addUrlPatterns(URLConfig.ME);
        
         return registrationBean;
     }
