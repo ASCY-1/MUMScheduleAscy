@@ -7,8 +7,8 @@
     }])
 .controller('loginController', function($http,$scope,$rootScope,$location,httpWrapper,$window,$cookieStore) {
         $scope.user = {
-            userName:"email@mail.com",
-            password:"pass"
+            userName:"faculty@mail.com",
+            password:"password"
         };
 
         $scope.send=function () {
@@ -47,10 +47,12 @@
                  		$window.location.href = 'admin';
                  		break;
                  	case "FACULTY":
-                 		$window.location.href = 'faculty';
+
+                 		$window.location.href = 'facultyIndex';
+
                  		break;
                  	case "STUDENT":
-                 		console.log("student");
+                 		console.log("student 1");
                  		$location.path("/student");
                  		break;
                  	default: 

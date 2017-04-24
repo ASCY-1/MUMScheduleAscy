@@ -4,7 +4,7 @@
 	// Declare app level module which depends on views, and components
 	
 	angular.module('mumSched',
-			[ 'ngMaterial', 'mumSched.login', 'mumSched.dashboard',
+			[ 'ngMaterial', 'mumSched.login',
 	
 			])
 	

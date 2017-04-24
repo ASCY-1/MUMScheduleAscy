@@ -10,7 +10,7 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 		 $scope.faculties = ["Moses", "Kendakenda", "Asingya", "Kangwanzi"];
 		//=============Blocks ==============//
 		    $scope.form = {};
-		   
+
 		    $scope.sendData = function () {
 		    	httpWrapper.post($scope.form, 'http://localhost:8080/block')
 		         .then(function (response) {
