@@ -47,7 +47,9 @@
                  		$window.location.href = 'admin';
                  		break;
                  	case "FACULTY":
+
                  		$window.location.href = 'facultyIndex';
+
                  		break;
                  	case "STUDENT":
                  		console.log("student 1");

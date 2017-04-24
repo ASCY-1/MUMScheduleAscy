@@ -1,18 +1,23 @@
 package com.ascy.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-@Entity
-public class Section {
+import com.ascy.controllers.URLConfig;
 
+@Entity
+public class Section implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
-	
+	private String name;
 	@ManyToOne
 	private Faculty faculty;
 	
@@ -21,22 +26,27 @@ public class Section {
 	
 	@ManyToOne
 	private Course course;
-	
 	private int seatsAvailable;
 	final int totalSeats=25;
 	
 	public Section() {
 		super();
 	}
-	
-	
-	public Section( Faculty faculty, Block block, Course course, int seatsAvailable) {
+	public Section(String name) {
 		super();		
-		this.faculty = faculty;
-		this.block = block;
-		this.course = course;
-		this.seatsAvailable = seatsAvailable;
+		this.seatsAvailable = (int) URLConfig.SECTION_MAX;
+		this.name = name;
 	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	
 	public int getId() {
 		return id;
 	}
@@ -69,5 +79,12 @@ public class Section {
 	}
 	public int getTotalSeats() {
 		return totalSeats;
+	}
+	
+
+	@Override
+	public String toString() {
+		return "Section [id=" + id + ", faculty=" + faculty + ", block=" + block + ", course=" + course
+				+ ", seatsAvailable=" + seatsAvailable + ", totalSeats=" + totalSeats + ", name=" + name + "]";
 	}
 }
