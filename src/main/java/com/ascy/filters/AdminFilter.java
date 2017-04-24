@@ -33,6 +33,7 @@ public class AdminFilter extends GenericFilterBean {
 	        try {
 	            final Claims claims = Jwts.parser().setSigningKey(UserToken.secretKey)
 	                .parseClaimsJws(token).getBody();
+	            
 	            request.setAttribute("claims", claims);
 	        }
 	        catch (final SignatureException e) {

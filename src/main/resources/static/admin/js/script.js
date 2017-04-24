@@ -1,30 +1,63 @@
-var app = angular.module("myApp", ["ngRoute"]);
+var app = angular.module("mumSched", ["ngRoute","ngCookies"]);
+console.log("inside script script");
 
-app.controller("mainController", ['$scope','$http', myFunc]);
+
+app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper', myFunc]);
 //=============Controller Loaders==============//
-	function myFunc($scope, $http) {
+	function myFunc($scope, $http,$cookieStore, httpWrapper) {
+		 $scope.courses = ["WAP", "MWA", "WAA", "Algithms"];
+		 $scope.faculties = ["Moses", "Kendakenda", "Asingya", "Kangwanzi"];
 		//=============Blocks ==============//
 		    $scope.form = {};
+		   
 		    $scope.sendData = function () {
-		         $http.post('http://localhost:8080/block', $scope.form)
-		         .success(function (data, status, headers, config) {
+		    	httpWrapper.post($scope.form, 'http://localhost:8080/block')
+		         .then(function (response) {
 		        	 $scope.getBlocks();
 		        	 $scope.form = {};
 		        	 toastr.success("Success");
-		         })
-		         .error(function (data, status, header, config) {
+		         },function (response) {
 		        	 toastr.error("Error");
 		         });
 		     };
 		     
 		     $scope.blocks = [];
 		     $scope.getBlocks = function(){
-		    	 $http.get('http://localhost:8080/block').success(function(data){
-		        	 $scope.blocks = data;
-		         });
+                 httpWrapper.get({},'http://localhost:8080/block').then(function(data){
+		        	 $scope.blocks = data.data;
+		        	 console.log(data.data);
+		         }, function (data) {
+					 console.log("Error :"+data);
+                 });
 		     };
 		     $scope.getBlocks();
+
 		     
+		//=============Sections ==============//
+		     	$scope.sections = [];
+			    $scope.viewScetions = function (block) {
+			    	console.log("==============progress here===============");
+			    	console.log(block);
+//			    	httpWrapper.post($scope.form, 'http://localhost:8080/block')
+//			         .then(function (response) {
+//			        	 $scope.getBlocks();
+//			        	 $scope.form = {};
+//			        	 toastr.success("Success");
+//			         },function (response) {
+//			        	 toastr.error("Error");
+//			         });
+			     };
+			     
+//			     $scope.blocks = [];
+//			     $scope.viewScetions = function(){
+//	                 httpWrapper.get({},'http://localhost:8080/block').then(function(data){
+//			        	 $scope.blocks = data.data;
+//			        	 console.log(data.data);
+//			         }, function (data) {
+//						 console.log("Error :"+data);
+//	                 });
+//			     };
+//			     $scope.getBlocks();
 	   //=============Students ==============//
 		    $scope.student = {};
 		    $scope.sendStudentData = function () {
@@ -41,9 +74,11 @@ app.controller("mainController", ['$scope','$http', myFunc]);
 		     
 		     $scope.students = [];
 		     $scope.getStudents = function(){
-		    	 $http.get('http://localhost:8080/student').success(function(data){
-		        	 $scope.students = data;
-		         });
+		    	 httpWrapper.get({},'http://localhost:8080/student').then(function(data){
+		        	 $scope.students = data.data;
+		         }, function (data) {
+					 console.log("Error :"+data);
+                 });
 		     };
 		     $scope.getStudents();
 	    
@@ -54,6 +89,8 @@ app.controller("mainController", ['$scope','$http', myFunc]);
 	app.config(function ($routeProvider) {
 	    $routeProvider
 	        .when("/", {
+	            templateUrl: "blocks.html"
+	        }).when("/student", {
 	            templateUrl: "students-sec.html"
 	        })
 	        .when("/blocks", {

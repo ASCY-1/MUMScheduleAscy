@@ -77,6 +77,63 @@
     float: right;
 }
 
+.select-field{
+    width: 160px;
+}
+
 .reg-form-actual{
     margin: 30px;
+}
+
+.blocksTable ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+}
+
+blocksTable li {
+    float: left;
+    display: inline-block;
+}
+
+blocksTable li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.col-xs-1, .col-xs-4, .col-xs-4, .col-xs-3, .col-xs-2{
+	background-color: lightgray;
+    border: solid #ada8a8 0.5px;
+    height: 40px;
+    margin: 1px 0px;
+}
+
+.thead{
+	    background-color: darkgrey;
+}
+
+.custom-button{
+	margin-top: 2px;
+}
+
+.save-section{
+	float: right;
+    display: inline-block;
+    margin: 10px 30px;
+}
+
+.sections-header{
+	display: inline-block;
+    float: left;
+    vertical-align: middle;
+}
+
+.tab-sections{
+	border: solid black 1px;
 }

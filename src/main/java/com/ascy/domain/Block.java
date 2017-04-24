@@ -1,32 +1,56 @@
 package com.ascy.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Block {
+public class Block implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinTable(name="Block_Section", joinColumns=@JoinColumn(name="block_id"), inverseJoinColumns=@JoinColumn(name="section_id"))
 	private List<Section> sections;
 	private String blockname;
 	private Date beginDate;
 	private Date endDate;
-	public Block(List<Section> sections, String blockname, Date beginDate, Date endDate) {
-		super();
+	
+	public List<Section> getSections() {
+		return sections;
+	}
+	public void setSections(List<Section> sections) {
 		this.sections = sections;
+	}
+	public Block(String blockname, Date beginDate, Date endDate) {
+		super();
 		this.blockname = blockname;
 		this.beginDate = beginDate;
 		this.endDate = endDate;
 	}
+//	public Block(List<Section> sections, String blockname, Date beginDate, Date endDate) {
+//		super();
+//		this.sections = sections;
+//		this.blockname = blockname;
+//		this.beginDate = beginDate;
+//		this.endDate = endDate;
+//	}
 	public Block() {
 		super();
 	}
@@ -40,12 +64,12 @@ public class Block {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public List<Section> getSections() {
-		return sections;
-	}
-	public void setSections(List<Section> sections) {
-		this.sections = sections;
-	}
+//	public List<Section> getSections() {
+//		return sections;
+//	}
+//	public void setSections(List<Section> sections) {
+//		this.sections = sections;
+//	}
 	public String getBlockname() {
 		return blockname;
 	}
@@ -53,6 +77,7 @@ public class Block {
 		this.blockname = blockname;
 	}
 	public Date getBeginDate() {
+//		System.out.println("========================"+beginDate+"=========================");
 		return beginDate;
 	}
 	public void setBeginDate(Date beginDate) {
@@ -63,6 +88,11 @@ public class Block {
 	}
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+	@Override
+	public String toString() {
+		return "Block [id=" + id + ", blockname=" + blockname + ", beginDate=" + beginDate + ", endDate=" + endDate
+				+ "]";
 	}
 	
 	

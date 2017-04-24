@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ascy.domain.Block;
 import com.ascy.domain.Section;
 import com.ascy.repository.SectionRepository;
 
@@ -15,12 +16,10 @@ public class SectionService {
 	private SectionRepository sectionRepository; 
 	
 	public List<Section> getAll() {
-		// TODO Auto-generated method stub
 		return (List<Section>)sectionRepository.findAll();
 	}
 
 	public Section getById(int id) {
-		// TODO Auto-generated method stub
 		return sectionRepository.findOne(id);
 	}
 
@@ -30,15 +29,16 @@ public class SectionService {
 	}
 
 	public void update(Section section) {
-		// TODO Auto-generated method stub
 		sectionRepository.save(section);
 	}
 
 	public void delete(Section section) {
-		// TODO Auto-generated method stub
 		sectionRepository.delete(section);
 	}
 	
+	public List<Section> findByBlock(Block block) {
+		return (List<Section>)sectionRepository.findByBlock(block);
+	}
 	
 
 }
