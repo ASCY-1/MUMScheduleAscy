@@ -5,10 +5,11 @@ console.log("inside script script");
 app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper', myFunc]);
 //=============Controller Loaders==============//
 	function myFunc($scope, $http,$cookieStore, httpWrapper) {
+		 $scope.courses = ["WAP", "MWA", "WAA", "Algithms"];
+		 $scope.faculties = ["Moses", "Kendakenda", "Asingya", "Kangwanzi"];
 		//=============Blocks ==============//
 		    $scope.form = {};
-		    console.log($cookieStore.get("token")); 
-		    console.log("jhfhgfhgfhfhg"); 
+		   
 		    $scope.sendData = function () {
 		    	httpWrapper.post($scope.form, 'http://localhost:8080/block')
 		         .then(function (response) {
@@ -30,7 +31,33 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
                  });
 		     };
 		     $scope.getBlocks();
+
 		     
+		//=============Sections ==============//
+		     	$scope.sections = [];
+			    $scope.viewScetions = function (block) {
+			    	console.log("==============progress here===============");
+			    	console.log(block);
+//			    	httpWrapper.post($scope.form, 'http://localhost:8080/block')
+//			         .then(function (response) {
+//			        	 $scope.getBlocks();
+//			        	 $scope.form = {};
+//			        	 toastr.success("Success");
+//			         },function (response) {
+//			        	 toastr.error("Error");
+//			         });
+			     };
+			     
+//			     $scope.blocks = [];
+//			     $scope.viewScetions = function(){
+//	                 httpWrapper.get({},'http://localhost:8080/block').then(function(data){
+//			        	 $scope.blocks = data.data;
+//			        	 console.log(data.data);
+//			         }, function (data) {
+//						 console.log("Error :"+data);
+//	                 });
+//			     };
+//			     $scope.getBlocks();
 	   //=============Students ==============//
 		    $scope.student = {};
 		    $scope.sendStudentData = function () {

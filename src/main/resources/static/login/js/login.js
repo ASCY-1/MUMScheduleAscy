@@ -47,7 +47,7 @@
                  		$window.location.href = 'admin';
                  		break;
                  	case "FACULTY":
-                 		$window.location.href = 'admin.html';
+                 		$window.location.href = 'faculty';
                  		break;
                  	case "STUDENT":
                  		console.log("student");
