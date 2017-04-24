@@ -13,11 +13,10 @@ angular.module('mumSched.index',['ngRoute','ngCookies'])
     }])
     .controller("offeredController",['$scope','httpWrapper',function($scope,httpWrapper){
        $scope.pageSubTitle = "Offered Courses";
-        $scope.message = "";
-
+       $scope.message = "";
         var getCourses = function(){
 
-           console.log("fucntion in calss");
+           console.log("fucntion  ");
 
          httpWrapper.get({},"/course").then(function (response) {
              console.log(response);
