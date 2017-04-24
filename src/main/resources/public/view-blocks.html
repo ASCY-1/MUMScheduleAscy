@@ -14,15 +14,15 @@
             	</div>
             	<div class="blocksTable">
             		<div ng-repeat="block in blocks">
-            			<div class="tab-block">
+            			<div class="tab-block"  ng-click="showDiv = !showDiv">
             				<div class="col-xs-1">{{ block.id }}</div>
 	            			<div class="col-xs-4">{{ block.blockname }}</div>
 	            			<div class="col-xs-3">{{ block.beginDate | date }}</div>
 	            			<div class="col-xs-2">{{ block.endDate | date }}</div>
-	            			<div class="col-xs-2"><button type="button" ng-click="showDiv = !showDiv" class="btn btn-info custom-button" ng-click="viewScetions(block)">Sections</button></div>
+	            			<div class="col-xs-2"><button type="button" class="btn btn-info custom-button" ng-click="viewScetions(block)">Sections</button></div>
             			</div>
             			<div class="tab-sections" ng-show="showDiv">
-            				<h3 class="sections-header">List of Sections {{ block.blockname }}</h3>
+            				<h5 class="sections-header">List of Sections {{ block.blockname }}</h5>
             				
             				<table class="table table-striped table-hover">
 				                <thead>

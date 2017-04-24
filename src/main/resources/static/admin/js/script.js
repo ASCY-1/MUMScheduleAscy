@@ -79,9 +79,6 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 		         }, function (data) {
 					 console.log("Error :"+data);
                  });
-//		    	 $http.get('http://localhost:8080/student').success(function(data){
-//		        	 $scope.students = data;
-//		         });
 		     };
 		     $scope.getStudents();
 	    
@@ -92,6 +89,8 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	app.config(function ($routeProvider) {
 	    $routeProvider
 	        .when("/", {
+	            templateUrl: "blocks.html"
+	        }).when("/student", {
 	            templateUrl: "students-sec.html"
 	        })
 	        .when("/blocks", {
