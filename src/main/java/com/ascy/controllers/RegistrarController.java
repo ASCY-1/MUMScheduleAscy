@@ -6,8 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class RegistrarController {
 	@RequestMapping(URLConfig.ADMIN)
-	public String loginPage(){			
+	public String adminHomePage(){			
 		return "admin/admin";
+	}
+	@RequestMapping(URLConfig.FACULTY_INDEX)
+	public String facultyHomePage(){
+		return "faculty/faculty";
 	}
 }
 

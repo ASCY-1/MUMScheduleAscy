@@ -35,6 +35,7 @@ public class AdminFilter extends GenericFilterBean {
 	                .parseClaimsJws(token).getBody();
 	            
 	            request.setAttribute("claims", claims);
+	        
 	        }
 	        catch (final SignatureException e) {
 	            throw new ServletException("Invalid token.");
