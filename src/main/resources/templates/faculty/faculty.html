@@ -1,11 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
-
-    <title>Admin44 ASCY - MUMSched</title>
+    <link th:href="@{bower_components/bootstrap/dist/css/bootstrap.css}" rel="stylesheet" media="screen" />
+    <title>Faculty ASCY - MUMSched</title>
 </head>
 <body ng-app="mumSched">
+<!--        Nav-bar  -->
+       <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        {{pageTite}}
+      </a>
+    </div>
+      <form class="navbar-form navbar-right" role="search">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search"></input>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+  </div>
+</nav> 
+<!--        end Nav-bar -->
+        
+        <div class="container">
+            <div class="hidden-xs col-md-3">
+                <div class="well">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class='active'><a href="#/offerings">
+                            offered</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div ng-view="true"></div>
 
+            </div>
+        
+     </div>
 
 <script th:src="@{bower_components/angular/angular.js}"></script>
 <script th:src="@{bower_components/angular-route/angular-route.js}"></script>
@@ -14,8 +46,11 @@
 <script th:src="@{bower_components/angular-messages/angular-messages.min.js}"></script>
 <script th:src="@{bower_components/angular-material/angular-material.min.js}"></script>
 <script th:src="@{bower_components/angular-cookies/angular-cookies.min.js}"></script>
+<script th:src="@{bower_components/jquery/dist/jquery.slim.js}"></script>
+<script th:src="@{bower_components/bootstrap/dist/js/bootstrap.js}"></script>
 
 
+<script th:src="@{faculty/js/offeredCourse.js}"></script>
 <script th:src="@{faculty/js/app.js}"></script>
 <script th:src="@{service/httpWrapper.js}"></script>
 <script th:src="@{components/version/version.js}"></script>

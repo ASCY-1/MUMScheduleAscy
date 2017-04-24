@@ -1,9 +1,9 @@
 angular
     .module(
     'mumSched',
-    ['ngRoute',])
+    ['ngRoute','mumSched.index'])
     .config(['$locationProvider','$routeProvider',function ($locationProvider, $routeProvider) {
         $routeProvider.otherwise({
-            redirectTo:"/index"
+            redirectTo:"/offerings"
         });
     }]);

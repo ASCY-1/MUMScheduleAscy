@@ -7,8 +7,8 @@
     }])
 .controller('loginController', function($http,$scope,$rootScope,$location,httpWrapper,$window,$cookieStore) {
         $scope.user = {
-            userName:"email@mail.com",
-            password:"pass"
+            userName:"faculty@mail.com",
+            password:"password"
         };
 
         $scope.send=function () {
