@@ -25,6 +25,11 @@ public class Course {
 	public Course() {
 		super();
 	}
+	public Course(String courseCode, String courseTitle) {
+		super();
+		this.courseCode = courseCode;
+		this.courseTitle = courseTitle;
+	}
 	public Course(String courseCode, String courseTitle, Course preReq) {
 		super();
 		this.courseCode = courseCode;

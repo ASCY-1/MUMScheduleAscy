@@ -22,9 +22,8 @@ public class Profile {
 	private String password;
 	
 	
-	public Profile(int id, String firstName, String lastName, String email, Roles role, String password) {
+	public Profile(String firstName, String lastName, String email, Roles role, String password) {
 		super();
-		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;

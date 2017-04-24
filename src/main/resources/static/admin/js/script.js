@@ -5,7 +5,8 @@ console.log("inside script script");
 app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper', myFunc]);
 //=============Controller Loaders==============//
 	function myFunc($scope, $http,$cookieStore, httpWrapper) {
-		 $scope.courses = ["WAP", "MWA", "WAA", "Algithms"];
+		 $scope.courses = {};
+		
 		 $scope.faculties = ["Moses", "Kendakenda", "Asingya", "Kangwanzi"];
 		//=============Blocks ==============//
 		    $scope.form = {};
@@ -79,9 +80,38 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 		         }, function (data) {
 					 console.log("Error :"+data);
                  });
+//		    	 $http.get('http://localhost:8080/student').success(function(data){
+//		        	 $scope.students = data;
+//		         });
 		     };
 		     $scope.getStudents();
 	    
+	     //=============Courses ==============//
+		    $scope.cform = {};
+		   
+		    $scope.saveCourse = function () {
+		    	httpWrapper.post($scope.cform, 'http://localhost:8080/course')
+		         .then(function (response) {
+		        	 $scope.getCourses();
+		        	 $scope.cform = {};
+		        	 toastr.success("Success");
+		         },function (response) {
+		        	 toastr.error("Error");
+		         });
+		     };
+		     
+		     $scope.courses = [];
+		     $scope.getCourses = function(){
+                 httpWrapper.get({},'http://localhost:8080/course').then(function(data){
+		        	 $scope.courses = data.data;
+		        	 console.log(data.data);
+		         }, function (data) {
+					 console.log("Error :"+data);
+                 });
+		     };
+		     
+		     
+		     $scope.getCourses();
 	}
 
 
@@ -92,12 +122,13 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	            templateUrl: "blocks.html"
 	        }).when("/student", {
 	            templateUrl: "students-sec.html"
-	        })
-	        .when("/blocks", {
-	        templateUrl: "blocks.html"
-	    }).when("/courses", {
-	        templateUrl: "courses.html"
-	    }).when("/faculty", {
-	            templateUrl: "faculty.html"
-	    });
+	        }).when("/blocks", {
+	        	templateUrl: "blocks.html"
+		    }).when("/courses", {
+		        templateUrl: "courses.html"
+		    }).when("/faculty", {
+		            templateUrl: "faculty.html"
+		    }).when("/profile", {
+		            templateUrl: "profiles.html"
+		    });
 	});
