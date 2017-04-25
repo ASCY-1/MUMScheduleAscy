@@ -13,9 +13,6 @@ import com.ascy.domain.Faculty;
 import com.ascy.domain.Profile;
 import com.ascy.repository.FacultyRepository;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
-
-
 @Service
 public class FacultyService {
 
@@ -67,10 +64,8 @@ public class FacultyService {
 			return f.getProposedCourses();
 		}
 		throw new ServletException("Invalid Authorization");
-		
 	}
 
-	
 	public void deleteCourseOffer(Course course, Profile p) throws ServletException{
 		Faculty f = facultyRepository.findByProfileId(p);
 		if(f!=null){
@@ -79,7 +74,6 @@ public class FacultyService {
 			return ;
 		}
 		throw new ServletException("Invalid Authorization");
-		
 	}
 	
 	
