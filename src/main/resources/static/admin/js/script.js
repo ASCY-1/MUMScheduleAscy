@@ -129,9 +129,11 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	     
    //============= Faculties ==============//
 	     $scope.getFaculties = function(){
-             httpWrapper.get({},'http://localhost:8080/profile').then(function(data){
-	        	 $scope.faculties = data.data;
+             httpWrapper.get({},'http://localhost:8080/faculty').then(function(data){
+             	console.log("faculty called");
+             	$scope.faculties = data.data;
 	        	 console.log(data.data);
+	        	 console.log("faculty end called");
 	         }, function (data) {
 				 console.log("Error :"+data);
              });
@@ -170,7 +172,7 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 		    }).when("/courses", {
 		        templateUrl: "courses.html"
 		    }).when("/faculty", {
-		            templateUrl: "faculty.html"
+		            templateUrl: "/faculty/facultyAll.html"
 		    }).when("/profile", {
 		            templateUrl: "profiles.html"
 		    }).when("/schedule", {

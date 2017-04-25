@@ -1,48 +1,79 @@
-/**
- * Created by 985649 on 4/20/2017.
- */
 angular.module('mumSched.index',['ngRoute','ngCookies'])
     .config(['$routeProvider','$locationProvider',function ($routeProvider,$locationProvider) {
-       $routeProvider
-           .when(
-               '/offerings', {
-                   templateUrl: "facultyTemplates/offers.html",
-                   controller: "offeredController"
-               });
+        $routeProvider
+            .when(
+                '/offerings', {
+                    templateUrl: "facultyTemplates/offers.html",
+                    controller: "offeredController"
+                });
 
     }])
     .controller("offeredController",['$scope','httpWrapper',function($scope,httpWrapper){
-       $scope.pageSubTitle = "Offered Courses";
+        $scope.pageSubTitle = "Offered Courses";
         $scope.message = "";
 
-        var getCourses = function(){
+        $scope.getCourses = function(){
+            httpWrapper.get({},'http://localhost:8080/course').then(function(data){
+                $scope.courses = data.data;
+                console.log($scope.courses);
+            }, function (data) {
+                console.log("Error :"+data);
+            });
+        };
+        $scope.getOfferedCourses = function(){
+            httpWrapper.get({},'http://localhost:8080/faculty/getOffered').then(function(data){
+                console.log("i am called");
+                $scope.offeredCourses = data.data;
 
-           console.log("fucntion in calss");
+            }, function (data) {
+                console.error(data);
+            });
+        };
+        $scope.getCourses();
+        $scope.getOfferedCourses();
 
-         httpWrapper.get({},"/course").then(function (response) {
-             console.log(response);
-            x= response.data;
-            $scope.allCourses = response.data;
-         },function (response) {
-            var display= '<div class="alert alert-danger" role="alert">'
-                + '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
-                '<span class="sr-only">' +
-                'Error:' +
-                '</span>' +
-                response.data+
-                '</div>';
-            $scope.message = display;
-            console.error(response);
 
-         });
 
-       };
-        getCourses();
 
-       $scope.saveOffer = function(){
+        $scope.saveOffer = function(){
+            httpWrapper.post($scope.addedCourse,'/faculty/addOffer').then(
+                function (response) {
+                    $("#addOffer").modal('hide');
+                    $scope.getOfferedCourses();
+                },
+                function (response) {
+                    console.error(response);
+                }
+            );
+        };
 
-       };
-       $scope.courseSelected = function ($event) {
-            console.log($event);
-       };
+        $scope.deleteOffered= function (course){
+            httpWrapper.delete(course,'/faculty/deleteOffer').then(
+                function (response) {
+                    console.log("deleteResponse");
+                    console.log(response);
+                    $scope.getOfferedCourses();
+                },
+                function(response){
+                    console.error(response);
+                }
+            )
+        };
+
+
+
+        $scope.addedCourse = [];
+        $scope.courseSelected = function (course,$event) {
+            if($event.currentTarget.checked){
+                $scope.addedCourse.push(course);
+            }
+            else{
+                for(var x=0;x<$scope.addedCourse.length;x++){
+                    if($scope.addedCourse[x].id== course.id) {
+                        $scope.addedCourse.splice(x, 1);
+                        break;
+                    }
+                }
+            }
+        };
     }]);
