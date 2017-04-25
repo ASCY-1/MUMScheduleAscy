@@ -35,8 +35,8 @@
 				                	<tr ng-repeat="section in block.sections">
 									    <td>{{ section.id }}</td>
 									    <td>{{ section.name }}</td>
-									    <td>{{ section.course }}</td>
-									    <td>{{ section.faculty }}</td>
+									    <td>{{ section.course.courseTitle }}</td>
+									    <td>{{ section.faculty.profile.firstName +' '+ section.faculty.profile.firstName}}</td>
 									    <td>{{ section.totalSeats }}</td>
 									    <td>{{ section.seatsAvailable }}</td>
 									 </tr>

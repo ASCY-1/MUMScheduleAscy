@@ -19,7 +19,6 @@ public class FacultyService {
 	@Autowired
 	private FacultyRepository facultyRepository; 
 	
-	
 	public List<Faculty> getAll() {
 		return (List<Faculty>)facultyRepository.findAll();
 	}
@@ -30,7 +29,6 @@ public class FacultyService {
 
 	public void create(Faculty faculty) {
 		facultyRepository.save(faculty);
-		
 	}
 
 	public void update(Faculty faculty) {
