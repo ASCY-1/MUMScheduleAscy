@@ -1,0 +1,68 @@
+<div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+        <div class="container">
+            <h4 class="gn-header">Generate Schedule Here</h4>
+            <div>
+            	<div class="blocksTable">
+	            	<div>
+            			<div class="col-xs-1 thead">#</div>
+            			<div class="col-xs-4 thead">Name</div>
+            			<div class="col-xs-3 thead">Start Date</div>
+            			<div class="col-xs-2 thead">End Date</div>
+            			<div class="col-xs-2 thead"></div>
+            		</div>
+            	</div>
+            	<div class="blocksTable">
+            		<div ng-repeat="block in blocks">
+            			<div class="tab-block"  ng-click="showDiv = !showDiv">
+            				<div class="col-xs-1">{{ block.id }}</div>
+	            			<div class="col-xs-4">{{ block.blockname }}</div>
+	            			<div class="col-xs-3">{{ block.beginDate | date }}</div>
+	            			<div class="col-xs-2">{{ block.endDate | date }}</div>
+	            			<div class="col-xs-2"><button type="button" class="btn btn-info custom-button" ng-click="viewScetions(block)">Sections</button></div>
+            			</div>
+            			<div class="tab-sections" ng-show="showDiv">
+            				<table class="table table-striped table-hover">
+				                <thead>
+				                <tr>
+				                	<th>#</th>
+				                    <th>Section Name</th>
+				                    <th>Course</th>
+				                    <th>Faculty</th>
+				                    <th>Total Seats</th>
+				                    <th>Seats Available</th>
+				                </tr>
+				                </thead>
+				                <tbody>
+				                	<tr ng-repeat="section in block.sections">
+									    <td>{{ section.id }}</td>
+									    <td>{{ section.name }}</td>
+									    <td>
+									    	<select ng-model="section.course"" ng-options="course.courseTitle for course in courses" class="form-control select-field"><option>jhgjh</select>
+									    </td>
+									    <td>
+									    	<select ng-model="section.faculty" ng-options="faculty.firstName+' '+faculty.lastName for faculty in faculties" class="form-control select-field"></select>
+									    </td>
+									    <td>{{ section.totalSeats }}</td>
+									    <td>{{ section.seatsAvailable }}</td>
+									    
+									 </tr>
+									 <tr>
+									 	<td colspan="5"></td>
+									 	<td>
+									 		<button type="button" class="btn btn-success custom-button save-section" ng-click="saveBlockScetion(block)">Save</button>
+            							</td>
+									 </tr>
+				                </tbody>
+				            </table>
+				            
+            			</div>
+            			
+            		</div>
+            	</div>
+            </div>
+            <button type="button" class="btn btn-success custom-button btn-right" ng-click="saveScetions(block)">Generate</button>
+            
+        </div>
+    </div>
+</div>

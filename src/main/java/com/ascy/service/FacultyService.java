@@ -24,12 +24,10 @@ public class FacultyService {
 	
 	
 	public List<Faculty> getAll() {
-		// TODO Auto-generated method stub
 		return (List<Faculty>)facultyRepository.findAll();
 	}
 
 	public Faculty getById(int id) {
-		// TODO Auto-generated method stub
 		return facultyRepository.findOne(id);
 	}
 
@@ -39,12 +37,10 @@ public class FacultyService {
 	}
 
 	public void update(Faculty faculty) {
-		// TODO Auto-generated method stub
 		facultyRepository.save(faculty);
 	}
 
 	public void delete(Faculty faculty) {
-		// TODO Auto-generated method stub
 		facultyRepository.delete(faculty);
 	}
 

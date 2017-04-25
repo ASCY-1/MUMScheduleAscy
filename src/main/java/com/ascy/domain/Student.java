@@ -34,16 +34,11 @@ public class Student {
 	
 	
 	
-	public Student( Profile profile, String regNumber, Entry entry, Track track,
-			List<Section> enrolledSections) {
+	public Student( Profile profile) {
 		super();
-		
 		this.profile = profile;
-		this.regNumber = regNumber;
-		this.entry = entry;
-		this.track = track;
-		this.enrolledSections = enrolledSections;
 	}
+	
 	public int getId() {
 		return id;
 	}
