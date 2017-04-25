@@ -5,13 +5,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class RegistrarController {
+	
 	@RequestMapping(URLConfig.ADMIN)
 	public String adminHomePage(){			
 		return "admin/admin";
 	}
+	
 	@RequestMapping(URLConfig.FACULTY_INDEX)
 	public String facultyHomePage(){
 		return "faculty/faculty";
+	}
+	
+	@RequestMapping(URLConfig.STUDENT_HOME)
+	public String studentHomePage(){
+		return "student/student_home";
 	}
 }
 

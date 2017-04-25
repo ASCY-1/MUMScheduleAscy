@@ -46,7 +46,7 @@
                  		$window.location.href = 'facultyIndex';
                  		break;
                  	case "STUDENT":
-                 		$location.path("/student-index");
+                 		$window.location.href = 'student_home';
                  		break;
                  	default: 
                  		console.log("Default");

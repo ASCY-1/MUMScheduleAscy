@@ -10,11 +10,5 @@ public class HomeController {
 	public String home(){
 		return "index";
 	}
-	
-
-//	@RequestMapping(URLConfig.PROFILE)
-//	public String profilesPage(){			
-//		return "profile";
-//	}
 }
 

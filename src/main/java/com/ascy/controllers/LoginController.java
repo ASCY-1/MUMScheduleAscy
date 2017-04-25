@@ -28,8 +28,6 @@ public class LoginController {
 
 	@RequestMapping(URLConfig.ME)
 	public Profile currentUser(HttpServletRequest request) {
-				
-		 
 		Claims c =(Claims) request.getAttribute("claims");
 		return loginService.currentUserProfile(c);
 	}

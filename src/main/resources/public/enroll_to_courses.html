@@ -1,0 +1,55 @@
+<div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+        <div class="container">
+            <div>
+            	<div class="blocksTable">
+	            	<div>
+            			<div class="col-xs-1 thead">#</div>
+            			<div class="col-xs-4 thead">Name</div>
+            			<div class="col-xs-3 thead">Start Date</div>
+            			<div class="col-xs-2 thead">End Date</div>
+            			<div class="col-xs-2 thead">Action</div>
+            		</div>
+            	</div>
+            	<div class="blocksTable">
+            		<div ng-repeat="block in blocks">
+            			<div class="tab-block"  ng-click="showDiv = !showDiv">
+            				<div class="col-xs-1">{{ block.id }}</div>
+	            			<div class="col-xs-4">{{ block.blockname }}</div>
+	            			<div class="col-xs-3">{{ block.beginDate | date }}</div>
+	            			<div class="col-xs-2">{{ block.endDate | date }}</div>
+	            			<div class="col-xs-2"><button type="button" class="btn btn-info custom-button" ng-click="viewScetions(block)">Sections</button></div>
+            			</div>
+            			<div class="tab-sections" ng-show="showDiv">
+            				<table class="table table-striped table-hover">
+				                <thead>
+					                <tr>
+					                	<th>#</th>
+					                    <th>Section</th>
+					                    <th>Course</th>
+					                    <th>Faculty</th>
+					                    <th>Total Seats</th>
+					                    <th>Seats Available</th>
+					                    <th>Select</th>
+					                </tr>
+				                </thead>
+				                <tbody>
+				                	<tr ng-repeat="section in block.sections">
+									    <td>{{ section.id }}</td>
+									    <td>{{ section.name }}</td>
+									    <td>{{ section.course.courseTitle }}</td>
+									    <td>{{ section.faculty.profile.firstName +" "+ section.faculty.profile.lastName }}</td>
+									    <td>{{ section.totalSeats }}</td>
+									    <td>{{ section.seatsAvailable }}</td>
+									    <td><input type="radio" name="myVar" value="dogs"></td>
+									 </tr>
+				                </tbody>
+				            </table>
+            			</div>
+            		</div>
+            	</div>
+            	<button type="button" class="btn btn-success custom-button save-section" ng-click="saveEnrollment(blocks)">Save Enrollment</button>
+            </div>
+        </div>
+    </div>
+</div>

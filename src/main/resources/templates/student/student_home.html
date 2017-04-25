@@ -12,13 +12,13 @@
 	<div ng-controller="mainController">
 		<div class="header">
 			<p>
-			<h4>ASCY - MUM Scheduling System - Student Portal</h4>
+			<h4>ASCY - MUM Scheduling System - Students Portal</h4>
 			</p>
 		</div>
 		<div class="content">
 			<div class="left-menu">
 				<ul class="list-group">
-					<a href="#/blocks" ng-click="getAllBlocks()">
+					<a href="#/" ng-click="getAllBlocks()">
 						<li class="list-group-item block-link" ng-click="activeUrl='blocks'" ng-class="{'active': activeUrl=='blocks'}">Blocks</li>
 					</a>
 					<a href="#/courses">
@@ -47,7 +47,7 @@
 	<script th:src="@{bower_components/angular-cookies/angular-cookies.min.js}"></script>
 
 
-	<script th:src="@{admin/js/script.js}"></script>
+	<script th:src="@{student/js/student.js}"></script>
 	<script th:src="@{service/httpWrapper.js}"></script>
 
 	
