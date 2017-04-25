@@ -22,9 +22,11 @@ angular.module('mumSched.index',['ngRoute','ngCookies'])
         };
         $scope.getOfferedCourses = function(){
             httpWrapper.get({},'http://localhost:8080/faculty/getOffered').then(function(data){
-                console.log("i am called");
-                $scope.offeredCourses = data.data;
 
+                $scope.offeredCourses =data;
+                console.log("################");
+                console.log(data.data);
+                console.log("################");
             }, function (data) {
                 console.error(data);
             });
@@ -48,6 +50,7 @@ angular.module('mumSched.index',['ngRoute','ngCookies'])
         };
 
         $scope.deleteOffered= function (course){
+
             httpWrapper.delete(course,'/faculty/deleteOffer').then(
                 function (response) {
                     console.log("deleteResponse");
@@ -58,6 +61,7 @@ angular.module('mumSched.index',['ngRoute','ngCookies'])
                     console.error(response);
                 }
             )
+
         };
 
 
@@ -69,7 +73,7 @@ angular.module('mumSched.index',['ngRoute','ngCookies'])
             }
             else{
                 for(var x=0;x<$scope.addedCourse.length;x++){
-                    if($scope.addedCourse[x].id== course.id) {
+                    if($scope.addedCourse[x].id == course.id) {
                         $scope.addedCourse.splice(x, 1);
                         break;
                     }

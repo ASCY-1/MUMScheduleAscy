@@ -14,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 public class Block implements Serializable{
 	
@@ -24,7 +27,8 @@ public class Block implements Serializable{
 	private int id;
 	
 //	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="Block_Section", joinColumns=@JoinColumn(name="block_id"), inverseJoinColumns=@JoinColumn(name="section_id"))
 	private List<Section> sections;
 	private String blockname;

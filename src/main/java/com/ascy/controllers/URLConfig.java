@@ -22,9 +22,11 @@ public class URLConfig {
 	public static final String FIRST = "/";
 	public static final String ADMIN = "/admin";	
 	public static final String FACULTY_INDEX = "/facultyIndex";
-	
+	public static final String FACULTY_ADD_OFFER="/faculty/addOffer";
 	public static final int ENTRY_TOTAL = 70;
 	public static final double SECTION_MAX = 25.0;
+	public static final String FACULTY_GET_OFFER = "/faculty/getOffered";
+	public static final String FACULTY_DELETE_OFFER = "/faculty/deleteOffer";
 	
 	
 }
