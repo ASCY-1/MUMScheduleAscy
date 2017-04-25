@@ -2,12 +2,16 @@ package com.ascy.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -17,13 +21,18 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
-	@OneToOne
+	
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinTable(name="Student_Profile", joinColumns=@JoinColumn(name="student_id"), inverseJoinColumns=@JoinColumn(name="profile_id"))
 	private Profile profile;
 	private String regNumber;
+	
 	@Enumerated(EnumType.STRING)
 	private Entry entry;
+	
 	@Enumerated(EnumType.STRING)
 	private Track track; 
+	
 	@OneToMany
 	private List<Section> enrolledSections;
 	

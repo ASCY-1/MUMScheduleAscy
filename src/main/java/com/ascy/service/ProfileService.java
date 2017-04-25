@@ -32,17 +32,17 @@ public class ProfileService implements IUserSubSystem{
 
 	public void create(Profile profile) {
 		switch(profile.getRole()){
-		case FACULTY :
-			Faculty faculty = new Faculty(profile);
-			facultyRepository.save(faculty);
-			break;
-		case STUDENT : 
-			Student student = new Student(profile);
-			studentRepository.save(student);
-			break;
-		case ADMIN :
-		default:
-			profileRepository.save(profile);
+			case FACULTY :
+				Faculty faculty = new Faculty(profile);
+				facultyRepository.save(faculty);
+				break;
+			case STUDENT : 
+				Student student = new Student(profile);
+				studentRepository.save(student);
+				break;
+			case ADMIN :
+			default:
+				profileRepository.save(profile);
 			
 		}
 		
