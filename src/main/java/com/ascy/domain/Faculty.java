@@ -12,10 +12,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+
 @Entity
+@NamedQuery(name = "Faculty.findByProfileId", query = "SELECT f FROM Faculty f WHERE f.profile = (?1)")
 public class Faculty {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -29,8 +35,10 @@ public class Faculty {
 	@ManyToMany
 	private List<Course> proposedCourses;
 	// what he is teaching
-	@OneToMany
-    private List<Section> sectionAssigned;
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="Faculty_section_assigned", joinColumns=@JoinColumn(name="faculty_id"), inverseJoinColumns=@JoinColumn(name="section_id"))
+	 private List<Section> sectionAssigned;
 	 
 	public Faculty() {
 		super();
