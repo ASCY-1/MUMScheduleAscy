@@ -38,10 +38,10 @@
 									    <td>{{ section.id }}</td>
 									    <td>{{ section.name }}</td>
 									    <td>
-									    	<select ng-model="section.course"" ng-options="course.courseTitle for course in courses" class="form-control select-field"><option>jhgjh</select>
+									    	<select ng-model="section.course"" ng-options="course.courseTitle for course in courses" class="form-control select-field"></select>
 									    </td>
 									    <td>
-									    	<select ng-model="section.faculty" ng-options="faculty.firstName+' '+faculty.lastName for faculty in faculties" class="form-control select-field"></select>
+									    	<select ng-model="section.faculty" ng-options="faculty.profile.firstName+' '+faculty.profile.lastName for faculty in faculties" class="form-control select-field"></select>
 									    </td>
 									    <td>{{ section.totalSeats }}</td>
 									    <td>{{ section.seatsAvailable }}</td>
@@ -61,7 +61,7 @@
             		</div>
             	</div>
             </div>
-            <button type="button" class="btn btn-success custom-button btn-right" ng-click="saveScetions(block)">Generate</button>
+            <button type="button" class="btn btn-success custom-button btn-right" ng-click="generateSchedule(blocks)">Generate</button>
             
         </div>
     </div>

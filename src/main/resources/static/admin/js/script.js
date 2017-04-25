@@ -124,9 +124,9 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	     $scope.getFaculties = function(){
              httpWrapper.get({},'http://localhost:8080/faculty').then(function(data){
              	console.log("faculty called");
-             	$scope.faculties = data.data;
-	        	 console.log(data.data);
-	        	 console.log("faculty end called");
+             	$scope.faculties  = data.data;
+	        	console.log(data.data);
+	        	console.log("faculty end called");
 	         }, function (data) {
 				 console.log("Error :"+data);
              });
@@ -145,7 +145,6 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 		        	 toastr.error("Error");
 		         });
 	    	 });
-	    	 
 	     };
 	//============= Generate Schedule ==============//
 	     $scope.generateSchedule = function (blocks) {
