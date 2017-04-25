@@ -137,6 +137,13 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	//============= Save Section Enrollment ==============//
 	     $scope.saveSectionEnrollment = function (data) {
 	    	 data.sections.forEach(function(section){
+	    		 if(section.selected == "true"){
+	    			 console.log("-------------------");
+	    			 console.log(section);
+	    			 console.log("-------------------");
+	    		 }else{
+	    			 console.log("Not Selected");
+	    		 }
 	    		 console.log(section);
 //	    		 httpWrapper.put(section, 'http://localhost:8080/section')
 //		         .then(function (response) {
