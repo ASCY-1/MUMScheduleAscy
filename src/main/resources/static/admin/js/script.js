@@ -172,7 +172,7 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 		    }).when("/courses", {
 		        templateUrl: "courses.html"
 		    }).when("/faculty", {
-		            templateUrl: "/faculty/facultyAll.html"
+		            templateUrl: "/facultyTemplates/facultyAll.html"
 		    }).when("/profile", {
 		            templateUrl: "profiles.html"
 		    }).when("/schedule", {

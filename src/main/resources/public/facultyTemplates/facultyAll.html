@@ -1,0 +1,18 @@
+<div class="container">
+    <table class="table table-bordered">
+        <tr>
+            <th>Full Name</th>
+            <th>Course Offers</th>
+            <th>Currently Teaching</th>
+        </tr>
+        <tr ng-repeat="faculty in faculties">
+            <td>
+                {{faculty.profile.firstName}} {{faculty.profile.lastName}}
+            </td>
+            <td><span ng-repeat="course in faculty.proposedCourses">{{course.courseTitle}} ({{course.courseCode}})</span></td>
+            <td>
+                <span ng-repeat="section in faculty.sectionAssigned">{{section}}</span>
+            </td>
+        </tr>
+    </table>
+</div>
