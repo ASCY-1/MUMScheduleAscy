@@ -12,36 +12,53 @@ angular.module('mumSched.index',['ngRoute','ngCookies'])
 
     }])
     .controller("offeredController",['$scope','httpWrapper',function($scope,httpWrapper){
-       $scope.pageSubTitle = "Offered Courses";
-       $scope.message = "";
-        var getCourses = function(){
+        $scope.pageSubTitle = "Offered Courses";
+        $scope.message = "";
 
-           console.log("fucntion  ");
+        $scope.getCourses = function(){
+            httpWrapper.get({},'http://localhost:8080/course').then(function(data){
+                $scope.courses = data.data;
+                console.log($scope.courses);
+            }, function (data) {
+                console.log("Error :"+data);
+            });
+        };
+        $scope.getOfferedCourses = function(){
+            httpWrapper.get({},'http://localhost:8080/faculty/getOffered').then(function(data){
+                $scope.offeredCourses = data.data;
+                console.log($scope.courses);
+            }, function (data) {
+                console.log("Error :"+data);
+            });
+        };
+        $scope.getCourses();
+        $scope.getOfferedCourses();
+        $scope.saveOffer = function(){
+            httpWrapper.post($scope.addedCourse,'/faculty/addOffer').then(
+                function (response) {
+                    console.log("real recognize real");
+                },
+                function (response) {
+                    console.log("Bullshit");
+                }
+            );
+        };
 
-         httpWrapper.get({},"/course").then(function (response) {
-             console.log(response);
-            x= response.data;
-            $scope.allCourses = response.data;
-         },function (response) {
-            var display= '<div class="alert alert-danger" role="alert">'
-                + '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
-                '<span class="sr-only">' +
-                'Error:' +
-                '</span>' +
-                response.data+
-                '</div>';
-            $scope.message = display;
-            console.error(response);
 
-         });
 
-       };
-        getCourses();
 
-       $scope.saveOffer = function(){
-
-       };
-       $scope.courseSelected = function ($event) {
-            console.log($event);
-       };
-    }]);
+        $scope.addedCourse = [];
+        $scope.courseSelected = function (course,$event) {
+            if($event.currentTarget.checked){
+                $scope.addedCourse.push(course);
+            }
+            else{
+               for(var x=0;x<$scope.addedCourse.length;x++){
+                   if($scope.addedCourse[x].id== course.id) {
+                       $scope.addedCourse.splice(x, 1);
+                       break;
+                   }
+               }
+            }
+        };
+        }]);

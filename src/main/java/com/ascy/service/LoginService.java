@@ -34,7 +34,6 @@ public class LoginService {
 			throw new ServletException("Invalid login");
 		}
 		if(!userDb.getPassword().equals(user.getPassword())){
-			System.out.println("!!!!!!!!!!!!*@@@@@@@@@@@@@@@@@@@@@@(!!!!!!!!!!!!!!!!@*!&@&#*");
 			
 			System.out.println(user.getPassword()+" from db:"+ userDb.getPassword());
 			throw new ServletException("Invalid password");

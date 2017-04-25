@@ -3,14 +3,19 @@ package com.ascy.domain;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.CascadeType;
+
 @Entity
+@NamedQuery(name = "Faculty.findByProfileId", query = "SELECT f FROM Faculty f WHERE f.profile = (?1)")
 public class Faculty {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -22,7 +27,7 @@ public class Faculty {
 	@ManyToMany
 	private List<Course> proposedCourses;
 	// what he is teaching
-	@OneToMany
+	@OneToMany(fetch=FetchType.EAGER)
     private List<Section> sectionAssigned;
 	 
 	public Faculty() {
