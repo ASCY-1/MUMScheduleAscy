@@ -16,16 +16,15 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Block implements Serializable{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+//	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name="Block_Section", joinColumns=@JoinColumn(name="block_id"), inverseJoinColumns=@JoinColumn(name="section_id"))
 	private List<Section> sections;
 	private String blockname;
@@ -44,19 +43,9 @@ public class Block implements Serializable{
 		this.beginDate = beginDate;
 		this.endDate = endDate;
 	}
-//	public Block(List<Section> sections, String blockname, Date beginDate, Date endDate) {
-//		super();
-//		this.sections = sections;
-//		this.blockname = blockname;
-//		this.beginDate = beginDate;
-//		this.endDate = endDate;
-//	}
 	public Block() {
 		super();
 	}
-	
-	
-	
 	
 	public int getId() {
 		return id;
@@ -64,12 +53,6 @@ public class Block implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-//	public List<Section> getSections() {
-//		return sections;
-//	}
-//	public void setSections(List<Section> sections) {
-//		this.sections = sections;
-//	}
 	public String getBlockname() {
 		return blockname;
 	}
@@ -77,7 +60,6 @@ public class Block implements Serializable{
 		this.blockname = blockname;
 	}
 	public Date getBeginDate() {
-//		System.out.println("========================"+beginDate+"=========================");
 		return beginDate;
 	}
 	public void setBeginDate(Date beginDate) {

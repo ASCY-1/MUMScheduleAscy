@@ -28,18 +28,16 @@ public class ProfileController {
 		return profileService.getById(id);
 	}
 	
-	@RequestMapping(value=URLConfig.PROFILE,method=RequestMethod.POST)
+	@RequestMapping(value=URLConfig.PROFILE, method=RequestMethod.POST)
 	public void create(@RequestBody Profile profile){
-		
 		profileService.create(profile);
-		
 	}
 	
-	@RequestMapping(value=URLConfig.PROFILE,method=RequestMethod.PUT)
+	@RequestMapping(value=URLConfig.PROFILE, method=RequestMethod.PUT)
 	public void update(@RequestBody Profile profile){
 		profileService.update(profile);
 	}
-	@RequestMapping(value=URLConfig.PROFILE,method=RequestMethod.DELETE)
+	@RequestMapping(value=URLConfig.PROFILE, method=RequestMethod.DELETE)
 	public void delete(@RequestBody Profile profile ){
 		profileService.delete(profile);
 	}

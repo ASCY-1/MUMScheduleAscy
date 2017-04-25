@@ -1,7 +1,6 @@
 package com.ascy.controllers;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,17 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ascy.IUserSubSystem;
 import com.ascy.domain.Profile;
 import com.ascy.security.*;
 import com.ascy.service.LoginService;
-import com.ascy.service.ProfileService;
-
 
 import io.jsonwebtoken.Claims;
-
-import java.util.*;
-
 
 @RestController
 // @Controller

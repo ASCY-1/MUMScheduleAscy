@@ -6,40 +6,53 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ascy.IUserSubSystem;
+import com.ascy.domain.Faculty;
 import com.ascy.domain.Profile;
+import com.ascy.domain.Student;
+import com.ascy.repository.FacultyRepository;
 import com.ascy.repository.ProfileRepository;
+import com.ascy.repository.StudentRepository;
 @Service
 public class ProfileService implements IUserSubSystem{
 
 	@Autowired
 	private ProfileRepository profileRepository; 
+	@Autowired
+	private FacultyRepository facultyRepository; 
+	@Autowired
+	private StudentRepository studentRepository; 
 	
 	public List<Profile> getAll() {
-		// TODO Auto-generated method stub
 		return (List<Profile>)profileRepository.findAll();
 	}
 
 	public Profile getById(int id) {
-		// TODO Auto-generated method stub
 		return profileRepository.findOne(id);
 	}
 
 	public void create(Profile profile) {
-		profileRepository.save(profile);
-		
+		switch(profile.getRole()){
+		case FACULTY :
+			Faculty faculty = new Faculty(profile);
+			facultyRepository.save(faculty);
+			break;
+		case STUDENT : 
+			Student student = new Student(profile);
+			studentRepository.save(student);
+			break;
+		case ADMIN :
+		default:
+			profileRepository.save(profile);
+			
+		}
 		
 	}
 
 	public void update(Profile profile) {
-		// TODO Auto-generated method stub
 		profileRepository.save(profile);
 	}
 
 	public void delete(Profile profile) {
-		// TODO Auto-generated method stub
 		profileRepository.delete(profile);
 	}
-	
-	
-
 }
