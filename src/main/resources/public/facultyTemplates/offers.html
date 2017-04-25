@@ -8,7 +8,13 @@
     </div>
     <table class="table">
         <tr ng-repeat="course in offeredCourses">
-            <th>{{course.title}}</th>
+            <th>{{course.courseTitle}} ({{course.courseCode}})
+                <span class="pull-right">
+                    <button class="btn btn-error" ng-click="deleteOffered(course)"><i class="glyphicon glyphicon-trash"></i></button>
+
+                </span>
+            </th>
+
         </tr>
     </table>
 </div>

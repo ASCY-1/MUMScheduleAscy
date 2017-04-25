@@ -60,7 +60,16 @@ public class FacultyController {
 		facultyService.addCourseOffers(courses,p);		
 	}
 	@RequestMapping(value=URLConfig.FACULTY_GET_OFFER,method=RequestMethod.GET)
-	public List<Course> getCourseOffers(){
+	public List<Course> getCourseOffers(HttpServletRequest request)throws ServletException{
 		
+		Profile p = loginService.currentUserProfile((Claims) request.getAttribute("claims"));
+		
+		return facultyService.getCourseOffers(p);
 	}
+	@RequestMapping(value= URLConfig.FACULTY_DELETE_OFFER,method= RequestMethod.DELETE)
+	public void deleteCourseOffer(@RequestBody Course course,HttpServletRequest request) throws ServletException{
+		Profile p = loginService.currentUserProfile((Claims) request.getAttribute("claims"));		
+		facultyService.deleteCourseOffer(course,p);
+	}
+	
 }

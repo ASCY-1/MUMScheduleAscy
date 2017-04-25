@@ -64,6 +64,27 @@ public class FacultyService {
 			throw new ServletException("Invalid Authorization");
 		}
 	}
+
+	public List<Course> getCourseOffers(Profile p) throws ServletException{
+		Faculty f= facultyRepository.findByProfileId(p);
+		if(f!=null){
+			return f.getProposedCourses();
+		}
+		throw new ServletException("Invalid Authorization");
+		
+	}
+
+	
+	public void deleteCourseOffer(Course course, Profile p) throws ServletException{
+		Faculty f = facultyRepository.findByProfileId(p);
+		if(f!=null){
+			f.setProposedCourses(f.getProposedCourses().stream().filter(x->x.getId()!=course.getId()).collect(Collectors.toList()));
+			facultyRepository.save(f);
+			return ;
+		}
+		throw new ServletException("Invalid Authorization");
+		
+	}
 	
 	
 

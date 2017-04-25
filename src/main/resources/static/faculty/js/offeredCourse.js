@@ -25,25 +25,43 @@ angular.module('mumSched.index',['ngRoute','ngCookies'])
         };
         $scope.getOfferedCourses = function(){
             httpWrapper.get({},'http://localhost:8080/faculty/getOffered').then(function(data){
+                console.log("i am called");
                 $scope.offeredCourses = data.data;
-                console.log($scope.courses);
+
             }, function (data) {
-                console.log("Error :"+data);
+                console.error(data);
             });
         };
         $scope.getCourses();
         $scope.getOfferedCourses();
+
+
+
+
         $scope.saveOffer = function(){
             httpWrapper.post($scope.addedCourse,'/faculty/addOffer').then(
                 function (response) {
-                    console.log("real recognize real");
+                    $("#addOffer").modal('hide');
+                    $scope.getOfferedCourses();
                 },
                 function (response) {
-                    console.log("Bullshit");
+                    console.error(response);
                 }
             );
         };
 
+        $scope.deleteOffered= function (course){
+          httpWrapper.delete(course,'/faculty/deleteOffer').then(
+              function (response) {
+                  console.log("deleteResponse");
+                  console.log(response);
+                  $scope.getOfferedCourses();
+              },
+              function(response){
+                  console.error(response);
+              }
+          )
+        };
 
 
 
