@@ -24,12 +24,10 @@
             }
             $http(req).then(function successCallback(response) {
                 $rootScope.token = response.data.token;
-//               
 				$cookieStore.put('token', response.data.token);
                 httpWrapper.get({},"/me").then(function(response){
                 	$rootScope.userProfile = response.data;
                 	$cookieStore.put('userProfile', response.data); 
-                	$cookieStore.put('test', "Test 1"); 
                 	redirectUser();
                 },function(response){
                 	console.error("Something wrong in fetching the user profile. In login.js");
@@ -40,20 +38,15 @@
             });
             
             function redirectUser(){
-                 console.log("==========++++++++++++++++=========>",$rootScope);
                  switch($rootScope.userProfile.role){
                  	case "ADMIN":
-                 		console.log("admin");
                  		$window.location.href = 'admin';
                  		break;
                  	case "FACULTY":
-
                  		$window.location.href = 'facultyIndex';
-
                  		break;
                  	case "STUDENT":
-                 		console.log("student 1");
-                 		$location.path("/student");
+                 		$location.path("/student-index");
                  		break;
                  	default: 
                  		console.log("Default");

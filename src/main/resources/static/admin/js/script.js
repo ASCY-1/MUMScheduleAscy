@@ -98,13 +98,6 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	   
 	    $scope.saveProfile = function () {
 	    	
-//	    	if($scope.pform.role == "ADMIN"){
-//	    		var str = 
-//	    		console.log("Working here..................");
-//	    	}else{
-//	    		console.log("Not working here");
-//	    	}
-	    	
 	    	httpWrapper.post($scope.pform, 'http://localhost:8080/profile')
 	         .then(function (response) {
 	        	 $scope.getProfiles();
@@ -141,9 +134,6 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	     
 	//============= Save Section ==============//
 	     $scope.saveBlockScetion = function (data) {
-	    	 console.log("-----------------------------");
-	    	 console.log(data);
-	    	 console.log("-----------------------------");
 	    	 data.sections.forEach(function(section){
 	    		 httpWrapper.put(section, 'http://localhost:8080/section')
 		         .then(function (response) {
@@ -154,6 +144,12 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 		         });
 	    	 });
 	    	 
+	     };
+	//============= Generate Schedule ==============//
+	     $scope.generateSchedule = function (blocks) {
+	    	 blocks.forEach(function(block){
+	    		 $scope.saveBlockScetion(block);
+	    	 })
 	     };
 	}
 
