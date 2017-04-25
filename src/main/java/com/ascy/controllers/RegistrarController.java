@@ -13,5 +13,10 @@ public class RegistrarController {
 	public String facultyHomePage(){
 		return "faculty/faculty";
 	}
+@RequestMapping(URLConfig.STUDENT_INDEX)
+	public String studentHomePage(){
+		return "student/student";
+	}
+	
 }
 

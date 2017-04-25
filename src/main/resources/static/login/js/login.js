@@ -52,9 +52,7 @@
 
                  		break;
                  	case "STUDENT":
-                 		console.log("student 1");
-                 		$location.path("/student");
-                 		break;
+                 		$window.location.href= "studentIndex";
                  	default: 
                  		console.log("Default");
                  }

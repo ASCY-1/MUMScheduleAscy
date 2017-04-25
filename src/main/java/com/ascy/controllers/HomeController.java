@@ -11,10 +11,17 @@ public class HomeController {
 		return "index";
 	}
 	
-	@RequestMapping(URLConfig.FACULTY2)
-	public String loginPage(){			
-		return "faculty/faculty";
-	}
+//	@RequestMapping(URLConfig.FACULTY2)
+//	public String facultyPage(){			
+//		return "faculty/faculty";
+//	}
+//	
+//	@RequestMapping(URLConfig.STUDENT_INDEX)
+//	public String studentPage(){			
+//		return "student/student";
+//	}
+//	
+	
 //	@RequestMapping(URLConfig.PROFILE)
 //	public String profilesPage(){			
 //		return "profile";

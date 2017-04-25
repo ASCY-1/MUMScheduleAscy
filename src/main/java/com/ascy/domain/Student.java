@@ -2,17 +2,23 @@ package com.ascy.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 
 @Entity
+@NamedQuery(name="Student.findByProfile",query="SELECT s FROM Student s WHERE s.profile = ?1")
 public class Student {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -24,6 +30,11 @@ public class Student {
 	private Entry entry;
 	@Enumerated(EnumType.STRING)
 	private Track track; 
+	
+	/*@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)*/
+	/*@JoinTable(name="Block_Section", joinColumns=@JoinColumn(name="block_id"), inverseJoinColumns=@JoinColumn(name="section_id"))*/
+	
+	
 	@OneToMany
 	private List<Section> enrolledSections;
 	
