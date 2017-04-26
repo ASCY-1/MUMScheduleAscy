@@ -59,7 +59,7 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	     };
 	     $scope.getStudents();
     
-     //=============Courses ==============//
+   //=============Courses ==============//
 	    $scope.cform = {};
 	   
 	    $scope.saveCourse = function () {
@@ -76,7 +76,6 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	     $scope.getCourses = function(){
              httpWrapper.get({},'http://localhost:8080/course').then(function(data){
 	        	 $scope.courses = data.data;
-	        	 console.log(data.data);
 	         }, function (data) {
 				 console.log("Error :"+data);
              });
@@ -89,7 +88,6 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	    	$("#addCoursePreReq").modal("hide");
 	    	httpWrapper.post($scope.selectedCourse.preReq,"/course/"+$scope.selectedCourse.id).then(
     			function(response){
-    				
     				toastr.success("Success");
     				$scope.getCourses();
     			},

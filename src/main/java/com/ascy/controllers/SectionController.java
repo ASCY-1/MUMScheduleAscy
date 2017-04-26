@@ -36,9 +36,6 @@ public class SectionController {
 	
 	@RequestMapping(value=URLConfig.SECTION,method=RequestMethod.PUT)
 	public void update(@RequestBody Section section){
-		System.out.println("=======================================================================");
-		System.out.println(section);
-		System.out.println("=======================================================================");
 		sectionService.update(section);
 	}
 	@RequestMapping(value=URLConfig.SECTION,method=RequestMethod.DELETE)
