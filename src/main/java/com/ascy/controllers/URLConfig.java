@@ -30,6 +30,7 @@ public class URLConfig {
 	public static final String STUDENT_ENROLMENTS="/enrollments";
 	public static final int ENTRY_TOTAL = 70;
 	public static final double SECTION_MAX = 25.0;
+	public static final String COURSE_ADD_PRE_REQ = "/course/{id}";
 	
 	
 }

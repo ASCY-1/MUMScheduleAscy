@@ -37,4 +37,11 @@ public class CourseService {
 		// TODO Auto-generated method stub
 		courseRepository.delete(course);
 	}
+
+	public void addPreReq(Course preReq, int courseId) {
+		Course c = courseRepository.findOne(courseId);
+		c.setPreReq(preReq);
+		courseRepository.save(c);
+		
+	}
 }
