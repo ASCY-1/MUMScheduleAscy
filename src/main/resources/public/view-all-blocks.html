@@ -7,8 +7,9 @@
 	            	<div>
             			<div class="col-xs-1 thead">#</div>
             			<div class="col-xs-5 thead">Name</div>
-            			<div class="col-xs-3 thead">Start Date</div>
-            			<div class="col-xs-3 thead">End Date</div>
+            			<div class="col-xs-2 thead">Entry</div>
+            			<div class="col-xs-2 thead">Start Date</div>
+            			<div class="col-xs-2 thead">End Date</div>
             		</div>
             	</div>
             	<div class="blocksTable">
@@ -16,8 +17,9 @@
             			<div class="tab-block"  ng-click="showDiv = !showDiv">
             				<div class="col-xs-1">{{ block.id }}</div>
 	            			<div class="col-xs-5">{{ block.blockname }}</div>
-	            			<div class="col-xs-3">{{ block.beginDate | date }}</div>
-	            			<div class="col-xs-3">{{ block.endDate | date }}</div>
+	            			<div class="col-xs-2">{{ block.entry }}</div>
+	            			<div class="col-xs-2">{{ block.beginDate | date }}</div>
+	            			<div class="col-xs-2">{{ block.endDate | date }}</div>
 	            		</div>
             			<div class="tab-sections" ng-show="showDiv">
             				

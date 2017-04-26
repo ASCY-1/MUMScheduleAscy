@@ -42,9 +42,6 @@ public class Student {
 		super();
 	}
 	
-	
-	
-	
 	public Student( Profile profile) {
 		super();
 		this.profile = profile;

@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,6 +35,8 @@ public class Block implements Serializable{
 	private String blockname;
 	private Date beginDate;
 	private Date endDate;
+	@Enumerated(EnumType.STRING)
+	private Entry entry;
 	
 	public List<Section> getSections() {
 		return sections;
@@ -74,14 +78,17 @@ public class Block implements Serializable{
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	@Override
-	public String toString() {
-		return "Block [id=" + id + ", blockname=" + blockname + ", beginDate=" + beginDate + ", endDate=" + endDate
-				+ "]";
+	
+	public Entry getEntry() {
+		return entry;
+	}
+	public void setEntry(Entry entry) {
+		this.entry = entry;
 	}
 	
-	
-	
-	
-
+	@Override
+	public String toString() {
+		return "Block [id=" + id + ", sections=" + sections + ", blockname=" + blockname + ", beginDate=" + beginDate
+				+ ", endDate=" + endDate + ", entry=" + entry + "]";
+	}
 }

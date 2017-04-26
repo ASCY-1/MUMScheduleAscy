@@ -6,10 +6,11 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	function myFunc($scope, $http,$cookieStore, httpWrapper) {
 		 $scope.courses = {};
 		 $scope.roles = ["ADMIN", "FACULTY", "STUDENT"];
-		 $scope.faculties = {};
+		 $scope.entries = ["JAN", "APR", "AUG", "OCT"];
+		 $scope.faculties = [];
 		 $scope.blocks = [];
 		 $scope.sections = [];
-		 $scope.student = {};
+		 $scope.student = [];
 		 $scope.courses = [];
 		 $scope.profiles = [];
 	//=============Blocks ==============//

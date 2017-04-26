@@ -7,7 +7,7 @@
     }])
 .controller('loginController', function($http,$scope,$rootScope,$location,httpWrapper,$window,$cookieStore) {
         $scope.user = {
-            userName:"student@gmail.com",
+            userName:"admin@ascy.com",
             password:"123"
         };
 
