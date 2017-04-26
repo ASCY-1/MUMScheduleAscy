@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ascy.domain.StudentSchedule;
+import com.ascy.service.LoginService;
 import com.ascy.service.StudentScheduleService;
 
 @RestController
@@ -18,6 +19,8 @@ public class StudentScheduleController {
 	@Autowired
 	private StudentScheduleService studentScheduleService;
 	
+	@Autowired
+	LoginService loginService;
 	
 	@RequestMapping(URLConfig.STUDENTSCHEDULE)
 	public List<StudentSchedule> index(){
@@ -29,16 +32,11 @@ public class StudentScheduleController {
 		return studentScheduleService.getById(id);
 	}
 	
-	@RequestMapping(value=URLConfig.STUDENTSCHEDULE,method=RequestMethod.POST)
-	public void create(@RequestBody StudentSchedule studentSchedule){
-		studentScheduleService.create(studentSchedule);
-	}
-	
-	@RequestMapping(value=URLConfig.STUDENTSCHEDULE,method=RequestMethod.PUT)
+	@RequestMapping(value=URLConfig.STUDENTSCHEDULE, method=RequestMethod.PUT)
 	public void update(@RequestBody StudentSchedule studentSchedule){
 		studentScheduleService.update(studentSchedule);
 	}
-	@RequestMapping(value=URLConfig.STUDENTSCHEDULE,method=RequestMethod.DELETE)
+	@RequestMapping(value=URLConfig.STUDENTSCHEDULE, method=RequestMethod.DELETE)
 	public void delete(@RequestBody StudentSchedule studentSchedule ){
 		studentScheduleService.delete(studentSchedule);
 	}

@@ -18,10 +18,6 @@ public class Course {
 	@OneToOne
 	private Course preReq;
 	
-	
-	
-	
-	
 	public Course() {
 		super();
 	}

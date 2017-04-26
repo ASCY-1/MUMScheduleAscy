@@ -9,24 +9,11 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 		 $scope.faculties = {};
 		 $scope.blocks = [];
 		 $scope.sections = [];
-		 $scope.student = {};
+		 $scope.enrolled = [];
 		 $scope.courses = [];
 		 $scope.profiles = [];
+		 
 	//=============Blocks ==============//
-	    $scope.form = {};
-
-	    $scope.sendData = function () {
-	    	httpWrapper.post($scope.form, 'http://localhost:8080/block')
-	         .then(function (response) {
-	        	 $scope.getBlocks();
-	        	 $scope.form = {};
-	        	 toastr.success("Success");
-	         },function (response) {
-	        	 toastr.error("Error");
-	         });
-	     };
-	     
-	     
 	     $scope.getBlocks = function(){
              httpWrapper.get({},'http://localhost:8080/block').then(function(data){
 	        	 $scope.blocks = data.data;
@@ -37,35 +24,18 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	     };
 	     $scope.getBlocks();
 
-	     
-	//=============Sections ==============//
-     	
-	    $scope.viewScetions = function (block) {
-	    	console.log("==============progress here===============");
-	    	console.log(block);
-	     };
-   //=============Students ==============//
-	    
-	    $scope.sendStudentData = function () {
-	         $http.post('http://localhost:8080/student', $scope.student)
-	         .success(function (data, status, headers, config) {
-	        	 $scope.getStudents();
-	        	 $scope.student = {};
-	        	 toastr.success("Student Successfully");
-	         })
-	         .error(function (data, status, header, config) {
-	        	 toastr.error("Error");
-	         });
-	     };
-	     
-	     $scope.getStudents = function(){
-	    	 httpWrapper.get({},'http://localhost:8080/student').then(function(data){
-	        	 $scope.students = data.data;
+   //=============Enrollments ==============//
+	     $scope.getEnrollments = function(){
+	    	 httpWrapper.get({},'http://localhost:8080/enrollments').then(function(data){
+	        	 $scope.enrolled = data.data.enrolledSections;
+	        	 console.log("---------enrollments-----------------");
+	        	 console.log(data.data);
+	        	 console.log("---------enrollments-----------------");
 	         }, function (data) {
 				 console.log("Error :"+data);
              });
 	     };
-	     $scope.getStudents();
+	     $scope.getEnrollments();
     
      //=============Courses ==============//
 	    $scope.cform = {};
@@ -85,7 +55,6 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	     $scope.getCourses = function(){
              httpWrapper.get({},'http://localhost:8080/course').then(function(data){
 	        	 $scope.courses = data.data;
-	        	 console.log(data.data);
 	         }, function (data) {
 				 console.log("Error :"+data);
              });
@@ -112,7 +81,6 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	     $scope.getProfiles = function(){
              httpWrapper.get({},'http://localhost:8080/profile').then(function(data){
 	        	 $scope.profiles = data.data;
-	        	 console.log(data.data);
 	         }, function (data) {
 				 console.log("Error :"+data);
              });
@@ -125,8 +93,6 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
              httpWrapper.get({},'http://localhost:8080/faculty').then(function(data){
              	console.log("faculty called");
              	$scope.faculties  = data.data;
-	        	console.log(data.data);
-	        	console.log("faculty end called");
 	         }, function (data) {
 				 console.log("Error :"+data);
              });
@@ -136,29 +102,31 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	     
 	//============= Save Section Enrollment ==============//
 	     $scope.saveSectionEnrollment = function (data) {
+	    	 var schedule_array = [];
 	    	 data.sections.forEach(function(section){
-	    		 if(section.selected == "true"){
-	    			 console.log("-------------------");
-	    			 console.log(section);
-	    			 console.log("-------------------");
-	    		 }else{
-	    			 console.log("Not Selected");
+	    		 if(section.selected == "selection"){
+	    			 schedule_array.push(section);
 	    		 }
-	    		 console.log(section);
-//	    		 httpWrapper.put(section, 'http://localhost:8080/section')
-//		         .then(function (response) {
-//		        	 $scope.getBlocks();
-//		        	 toastr.success("Success");
-//		         },function (response) {
-//		        	 toastr.error("Error");
-//		         });
 	    	 });
+	    	 
 	     };
 	//============= Save Enrollment ==============//
 	     $scope.saveEnrollment = function (blocks) {
+	    	 var schedule_array = [];
 	    	 blocks.forEach(function(block){
-	    		 $scope.saveSectionEnrollment(block);
+		    	 block.sections.forEach(function(section){
+		    		 if(section.selected == "selection"){
+		    			 schedule_array.push(section);
+		    		 }
+		    	 });
 	    	 })
+	    	 httpWrapper.post(schedule_array, 'http://localhost:8080/enroll')
+	         .then(function (response) {
+	        	 toastr.success("Success");
+	        	 $scope.getEnrollments();
+	         },function (response) {
+	        	 toastr.error("Error");
+	         });
 	     };
 	}
 

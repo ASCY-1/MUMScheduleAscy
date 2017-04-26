@@ -12,11 +12,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 
 @Entity
+@NamedQuery(name = "Student.findByProfile", query = "SELECT s FROM Student s WHERE s.profile = (?1)")
 public class Student {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

@@ -64,6 +64,7 @@ public class Profile {
 	public void setRole(Roles role) {
 		this.role = role;
 	}
+	
 	public String getPassword() {
 		return password;
 	}
@@ -71,5 +72,9 @@ public class Profile {
 		this.password = password;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Profile [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", role=" + role + ", password=" + password + "]";
+	}
 }

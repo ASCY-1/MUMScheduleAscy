@@ -1,0 +1,25 @@
+<div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+        <div class="container">
+            <h2>My Enrolled Courses</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Course</th>
+                    <th>Faculty</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                	<tr ng-repeat="en in enrolled">
+					    <td>{{ $index + 1 }}</td>
+					    <td>{{ en.course.courseTitle +" "+ en.course.courseCode }}</td>
+					    <td>{{ en.faculty.profile.firstName +" "+ en.faculty.profile.lastName}}</td>
+					    <td>ACTIVE</td>
+					</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

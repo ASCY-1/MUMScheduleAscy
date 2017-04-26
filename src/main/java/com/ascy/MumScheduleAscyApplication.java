@@ -39,6 +39,8 @@ public class MumScheduleAscyApplication {
         registrationBean.addUrlPatterns(URLConfig.FACULTY_ADD_OFFER);
         registrationBean.addUrlPatterns(URLConfig.FACULTY_GET_OFFER);
         registrationBean.addUrlPatterns(URLConfig.FACULTY_DELETE_OFFER);
+        registrationBean.addUrlPatterns(URLConfig.ENROLL_STUDENT);
+        registrationBean.addUrlPatterns(URLConfig.STUDENT_ENROLMENTS);
         return registrationBean;
     }
 	

@@ -26,6 +26,8 @@ public class URLConfig {
 	public static final String FACULTY_GET_OFFER = "/faculty/getOffered";
 	public static final String FACULTY_DELETE_OFFER = "/faculty/deleteOffer";
 	public static final String STUDENT_HOME="/student_home";
+	public static final String ENROLL_STUDENT="/enroll";
+	public static final String STUDENT_ENROLMENTS="/enrollments";
 	public static final int ENTRY_TOTAL = 70;
 	public static final double SECTION_MAX = 25.0;
 	
