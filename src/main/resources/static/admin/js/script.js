@@ -1,9 +1,9 @@
 var app = angular.module("mumSched", ["ngRoute","ngCookies"]);
 console.log("inside script script");
 
-app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper', myFunc]);
+app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper','$window', myFunc]);
 //=============Controller Loaders==============//
-	function myFunc($scope, $http,$cookieStore, httpWrapper) {
+	function myFunc($scope, $http, $cookieStore, httpWrapper, $window) {
 		 $scope.courses = {};
 		 $scope.roles = ["ADMIN", "FACULTY", "STUDENT"];
 		 $scope.entries = ["JAN", "APR", "AUG", "OCT"];
@@ -27,7 +27,6 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	         });
 	     };
 	     
-	     
 	     $scope.getBlocks = function(){
              httpWrapper.get({},'http://localhost:8080/block').then(function(data){
 	        	 $scope.blocks = data.data;
@@ -37,16 +36,8 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
              });
 	     };
 	     $scope.getBlocks();
-
 	     
-	//=============Sections ==============//
-     	
-	    $scope.viewScetions = function (block) {
-	    	console.log("==============progress here===============");
-	    	console.log(block);
-	     };
    //=============Students ==============//
-	    
 	    $scope.sendStudentData = function () {
 	         $http.post('http://localhost:8080/student', $scope.student)
 	         .success(function (data, status, headers, config) {
@@ -82,7 +73,6 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	         });
 	     };
 	     
-	     
 	     $scope.getCourses = function(){
              httpWrapper.get({},'http://localhost:8080/course').then(function(data){
 	        	 $scope.courses = data.data;
@@ -96,23 +86,21 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	     };
 	     
 	     $scope.addPreRequisite= function(){
-	    	
 	    	$("#addCoursePreReq").modal("hide");
-	    	console.log("p000000000000");
-	    	console.log($scope.selectedCourse.id);
-	    	console.log("/course/"+$scope.selectedCourse.id);
 	    	httpWrapper.post($scope.selectedCourse.preReq,"/course/"+$scope.selectedCourse.id).then(
-	    			function(response){
-	    				
-	    				toastr.success("Success");
-	    				$scope.getCourses();
-	    			},
-	    			function(response){
-	    				console.log()
-	    				toastr.error("Error");
-	    			}
-	    			
-	    			);
+    			function(response){
+    				
+    				toastr.success("Success");
+    				$scope.getCourses();
+    			},
+    			function(response){
+    				console.log()
+    				toastr.error("Error");
+    			}
+    			
+    			.when("/schedule", {
+		            templateUrl: "schedule.html"
+		    }));
 	     };
 	     $scope.getCourses();
 	     
@@ -175,8 +163,12 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	    		 $scope.saveBlockScetion(block);
 	    	 })
 	     };
+    //============= Logout ==============//
+	     $scope.logout = function () {
+	    	 console.log("-----------logout--------------");
+	    	 $window.location.href = '/';
+	     };
 	}
-
 
 //=============All Routes==============//
 	app.config(function ($routeProvider) {
@@ -195,5 +187,7 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 		            templateUrl: "profiles.html"
 		    }).when("/schedule", {
 		            templateUrl: "schedule.html"
+		    }).when("/logout", {
+		            templateUrl: "index.html"
 		    });
 	});

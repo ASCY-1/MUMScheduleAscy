@@ -5,7 +5,7 @@
             controller: 'loginController'
         });
     }])
-.controller('loginController', function($http,$scope,$rootScope,$location,httpWrapper,$window,$cookieStore) {
+.controller('loginController', function($http, $scope, $rootScope, $location, httpWrapper, $window, $cookieStore, $window) {
         $scope.user = {
             userName:"admin@ascy.com",
             password:"123"

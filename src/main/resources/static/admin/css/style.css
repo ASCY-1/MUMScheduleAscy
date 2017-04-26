@@ -1,6 +1,6 @@
 .header, .footer {
     background-color: #ccc8c8;
-    height:6%;
+    height:7%;
     position: fixed;
     width: 100%;
     text-align: center;
@@ -10,6 +10,17 @@
     top: 0px;
     z-index: 1000;
 }
+
+.main_header, .logout{
+	display: inline-block;
+}
+
+.logout{
+	float: right;
+	margin: 10px 36px;
+	font-size: 20px;
+}
+
 .footer{
     bottom: 0px;
 
@@ -18,9 +29,9 @@
 .content{
     background-color: #d4d0d0;
     position: absolute;
-    top: 7.2%;
+    top: 8.2%;
     width: 94%;
-    height: 85%;
+    height: 83%;
     margin: 2px 3% 2px 3%;
     border: solid lightgray;
     border-radius: 4px;

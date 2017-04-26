@@ -1,12 +1,11 @@
 var app = angular.module("mumSched", ["ngRoute","ngCookies"]);
-console.log("inside script script");
 
-app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper', myFunc]);
+app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper', '$window', myFunc]);
 //=============Controller Loaders==============//
-	function myFunc($scope, $http,$cookieStore, httpWrapper) {
+	function myFunc($scope, $http, $cookieStore, httpWrapper, $window) {
 		 $scope.courses = {};
 		 $scope.roles = ["ADMIN", "FACULTY", "STUDENT"];
-		 $scope.faculties = {};
+		 $scope.faculties = [];
 		 $scope.blocks = [];
 		 $scope.sections = [];
 		 $scope.enrolled = [];
@@ -17,7 +16,6 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	     $scope.getBlocks = function(){
              httpWrapper.get({},'http://localhost:8080/block').then(function(data){
 	        	 $scope.blocks = data.data;
-	        	 console.log(data.data);
 	         }, function (data) {
 				 console.log("Error :"+data);
              });
@@ -28,16 +26,13 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	     $scope.getEnrollments = function(){
 	    	 httpWrapper.get({},'http://localhost:8080/enrollments').then(function(data){
 	        	 $scope.enrolled = data.data.enrolledSections;
-	        	 console.log("---------enrollments-----------------");
-	        	 console.log(data.data);
-	        	 console.log("---------enrollments-----------------");
 	         }, function (data) {
 				 console.log("Error :"+data);
              });
 	     };
 	     $scope.getEnrollments();
     
-     //=============Courses ==============//
+   //=============Courses ==============//
 	    $scope.cform = {};
 	   
 	    $scope.saveCourse = function () {
@@ -127,6 +122,11 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	         },function (response) {
 	        	 toastr.error("Error");
 	         });
+	     };
+	//============= Logout ==============//
+	     $scope.logout = function () {
+	    	 console.log("---------logout-----------");
+	    	 $window.location.href = '/';
 	     };
 	}
 

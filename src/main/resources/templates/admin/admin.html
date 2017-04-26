@@ -11,9 +11,8 @@
 <body ng-app="mumSched">
 	<div ng-controller="mainController">
 		<div class="header">
-			<p>
-			<h4>ASCY - MUM Scheduling System</h4>
-			</p>
+			<h4 class="main_header">ASCY - MUM Scheduling System - Admin Portal</h4>
+			<div class="logout"><a ng-click="logout()">Logout</a></div>
 		</div>
 		<div class="content">
 			<div class="left-menu">
@@ -27,7 +26,7 @@
 					<a href="#/profile">
 						<li class="list-group-item" ng-click="activeUrl='profile'" ng-class="{'active': activeUrl=='profile'}">Profile</li>
 					</a>
-					<a href="#/">
+					<a href="#/student">
 						<li class="list-group-item" ng-click="activeUrl='student'" ng-class="{'active': activeUrl=='student'}">Students</li>
 					</a>
 					
