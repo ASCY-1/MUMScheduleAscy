@@ -15,7 +15,6 @@ angular.module('mumSched.index',['ngRoute','ngCookies'])
         $scope.getCourses = function(){
             httpWrapper.get({},'http://localhost:8080/course').then(function(data){
                 $scope.courses = data.data;
-                console.log($scope.courses);
             }, function (data) {
                 console.log("Error :"+data);
             });
@@ -24,9 +23,6 @@ angular.module('mumSched.index',['ngRoute','ngCookies'])
             httpWrapper.get({},'http://localhost:8080/faculty/getOffered').then(function(data){
 
                 $scope.offeredCourses = data.data;
-                console.log("################");
-                console.log(data.data);
-                console.log("################");
             }, function (data) {
                 console.error(data);
             });
@@ -51,8 +47,6 @@ angular.module('mumSched.index',['ngRoute','ngCookies'])
 
             httpWrapper.delete(course,'/faculty/deleteOffer').then(
                 function (response) {
-                    console.log("deleteResponse");
-                    console.log(response);
                     $scope.getOfferedCourses();
                 },
                 function(response){
