@@ -148,6 +148,7 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	//============= Save Section ==============//
 	     $scope.saveBlockScetion = function (data) {
 	    	 data.sections.forEach(function(section){
+	    		 
 	    		 httpWrapper.put(section, 'http://localhost:8080/section')
 		         .then(function (response) {
 		        	 $scope.getBlocks();
@@ -165,7 +166,6 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	     };
     //============= Logout ==============//
 	     $scope.logout = function () {
-	    	 console.log("-----------logout--------------");
 	    	 $window.location.href = '/';
 	     };
 	}

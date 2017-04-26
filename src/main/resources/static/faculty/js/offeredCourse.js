@@ -23,7 +23,7 @@ angular.module('mumSched.index',['ngRoute','ngCookies'])
         $scope.getOfferedCourses = function(){
             httpWrapper.get({},'http://localhost:8080/faculty/getOffered').then(function(data){
 
-                $scope.offeredCourses =data;
+                $scope.offeredCourses = data.data;
                 console.log("################");
                 console.log(data.data);
                 console.log("################");
@@ -34,19 +34,17 @@ angular.module('mumSched.index',['ngRoute','ngCookies'])
         $scope.getCourses();
         $scope.getOfferedCourses();
 
-
-
-
         $scope.saveOffer = function(){
             httpWrapper.post($scope.addedCourse,'/faculty/addOffer').then(
                 function (response) {
                     $("#addOffer").modal('hide');
-                    $scope.getOfferedCourses();
+                    
                 },
                 function (response) {
                     console.error(response);
                 }
             );
+            $scope.getOfferedCourses();
         };
 
         $scope.deleteOffered= function (course){
