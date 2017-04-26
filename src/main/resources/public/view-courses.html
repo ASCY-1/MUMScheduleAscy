@@ -17,9 +17,9 @@
 					    <td>{{ course.id }}</td>
 					    <td>{{ course.courseCode }}</td>
 					    <td>{{ course.courseTitle }}</td>
-					    <td>{{ course.preReq}}</td>
+					    <td>{{ course.preReq.courseTitle}}</td>
 					    <td>
-					    	<button type="button" class="btn btn-default btn-sm">
+					    	<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#addCoursePreReq" ng-click="setSelectedCourse(course)">
 					          <span></span> Set Prerequisite
 					        </button>
 					   </td>
@@ -28,4 +28,28 @@
             </table>
         </div>
     </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="addCoursePreReq" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">{{selectedCourse.courseTitle}}</h4>
+      </div>
+      <div class="modal-body">
+        <select ng-model="selectedCourse.preReq">
+        	<option ng-repeat="course in courses" value='{{course}}'>{{course.courseTitle}}</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="addPreRequisite()">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>

@@ -43,4 +43,8 @@ public class CourseController {
 	public void delete(@RequestBody Course course ){
 		courseService.delete(course);
 	}
+	@RequestMapping(value=URLConfig.COURSEDETAIL,method=RequestMethod.POST)
+	public void addPreReq(@RequestBody Course preReq, @PathVariable int id){
+		courseService.addPreReq(preReq,id);
+	}
 }

@@ -90,7 +90,28 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 				 console.log("Error :"+data);
              });
 	     };
+	     $scope.setSelectedCourse =function(course){
+	    	 $scope.selectedCourse= course;
+	     };
 	     
+	     $scope.addPreRequisite= function(){
+	    	
+	    	$("#addCoursePreReq").modal("hide");
+	    	console.log("p000000000000");
+	    	console.log($scope.selectedCourse.id);
+	    	console.log("/course/"+$scope.selectedCourse.id);
+	    	httpWrapper.post($scope.selectedCourse.preReq,"/course/"+$scope.selectedCourse.id).then(
+	    			function(response){
+	    				
+	    				toastr.success("Success");
+	    			},
+	    			function(response){
+	    				console.log()
+	    				toastr.error("Error");
+	    			}
+	    			
+	    			);
+	     };
 	     $scope.getCourses();
 	     
    //============= Profiles ==============//
