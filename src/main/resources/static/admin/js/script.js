@@ -104,6 +104,7 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 	    			function(response){
 	    				
 	    				toastr.success("Success");
+	    				$scope.getCourses();
 	    			},
 	    			function(response){
 	    				console.log()
