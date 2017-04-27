@@ -140,13 +140,11 @@ app.controller("mainController", ['$scope','$http','$cookieStore', 'httpWrapper'
 				 console.log("Error :"+data);
              });
 	     };
-	     
 	     $scope.getFaculties();
 	     
 	//============= Save Section ==============//
 	     $scope.saveBlockScetion = function (data) {
 	    	 data.sections.forEach(function(section){
-	    		 
 	    		 httpWrapper.put(section, 'http://localhost:8080/section')
 		         .then(function (response) {
 		        	 $scope.getBlocks();

@@ -27,7 +27,6 @@ public class Block implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
-//	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="Block_Section", joinColumns=@JoinColumn(name="block_id"), inverseJoinColumns=@JoinColumn(name="section_id"))
